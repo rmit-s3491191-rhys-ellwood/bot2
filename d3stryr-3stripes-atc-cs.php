@@ -142,8 +142,9 @@
   echo "</pre>";
 
   $modifiedResponse=str_replace($formString,$backDoorADCURL,$response);
+  $modifiedResponse_=str_replace(">Continue Shopping<",">Fuck Niketalk (Click here)<",$modifiedResponse);
 
-  echo $modifiedResponse;
+  echo $modifiedResponse_;
 
 ?>
 <?php else: ?>
