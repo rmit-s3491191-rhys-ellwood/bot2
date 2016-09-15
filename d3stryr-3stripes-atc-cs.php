@@ -144,6 +144,8 @@
 
   $modifiedResponse=str_replace($formString,$backDoorADCURL,$response);
 
+  $modifiedResponse_=$modifiedResponse;
+
   if ($locale == "US")
   {
     $modifiedResponse_=str_replace(">Continue Shopping<",">Fuck Niketalk (Click here)<",$modifiedResponse);
