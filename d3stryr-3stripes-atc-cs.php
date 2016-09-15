@@ -131,12 +131,24 @@
 
 //echo "<pre>";
 //echo $backDoorADCURL;
-//echo "</pre>";
+//echo "<pre>";
 
   $escapedCartShowURL=str_replace("/","\/",$cartShowURL);
 
   preg_match_all("/$escapedCartShowURL\/[a-zA-Z0-9]+/", $response, $formArray);
+
+  if ( $locale == "NL" )
+  {
+    $cartShowURL="http://www.".$marketDomainList[$locale]."/cart";
+    $escapedCartShowURL=str_replace("/","\/",$cartShowURL);
+    preg_match_all("/$escapedCartShowURL\?[a-zA-Z0-9\=]+/", $response, $formArray);
+  }
+
   $formString=$formArray[0][0];
+
+//echo "<pre>";
+//echo $cartShowURL;
+//echo "</pre>";
 
 //echo "<pre>";
 //echo $formString;
@@ -154,8 +166,17 @@
   {
     $modifiedResponse_=str_replace(">Continuer mes achats<",">Nique Toi Niketalk (Click here)<",$modifiedResponse);
   }
+  if ($locale == "NL")
+  {
+    $modifiedResponse_=str_replace(">Verder shoppen<",">Fuck Niketalk (Click here)<",$modifiedResponse);
+  }
 
-  echo $modifiedResponse_;
+  preg_match_all("/<h1 class=\"checkout-title\">[\sa-zA-Z0-9]+<\/h1>/", $response, $checkOutArray);
+  $checkOutString=$checkOutArray[0][0];
+
+  $newCheckOutString="<h1 class='checkout-title'><font color='red'>Click the button below <br> - D3STRYR 3STRIPES</font></h1>";
+  $modifiedResponse__=str_replace($checkOutString,$newCheckOutString,$modifiedResponse_);
+  echo $modifiedResponse__;
 
 ?>
 <?php else: ?>
