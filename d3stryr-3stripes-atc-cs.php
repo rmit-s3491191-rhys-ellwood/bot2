@@ -129,20 +129,29 @@
   $response = curl_exec($curl) or die(curl_error($curl));
   curl_close($curl);
 
-  echo "<pre>";
-  echo $backDoorADCURL;
-  echo "</pre>";
+//echo "<pre>";
+//echo $backDoorADCURL;
+//echo "</pre>";
 
   $escapedCartShowURL=str_replace("/","\/",$cartShowURL);
 
   preg_match_all("/$escapedCartShowURL\/[a-zA-Z0-9]+/", $response, $formArray);
   $formString=$formArray[0][0];
-  echo "<pre>";
-  echo $formString;
-  echo "</pre>";
+
+//echo "<pre>";
+//echo $formString;
+//echo "</pre>";
 
   $modifiedResponse=str_replace($formString,$backDoorADCURL,$response);
-  $modifiedResponse_=str_replace(">Continue Shopping<",">Fuck Niketalk (Click here)<",$modifiedResponse);
+
+  if ($locale == "US")
+  {
+    $modifiedResponse_=str_replace(">Continue Shopping<",">Fuck Niketalk (Click here)<",$modifiedResponse);
+  }
+  if ($locale == "FR")
+  {
+    $modifiedResponse_=str_replace(">Continuer mes achats<",">Nique Toi Niketalk (Click here)<",$modifiedResponse);
+  }
 
   echo $modifiedResponse_;
 
