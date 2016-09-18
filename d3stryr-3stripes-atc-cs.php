@@ -60,6 +60,7 @@
   $clientId=$_POST['clientId'];
   $locale=$_POST['locale'];
 
+  $baseJSResourceUrl="http://www.adidas.com";
   $baseRestoreBasketUrl="http://www.".$marketDomainList[$locale];
   $baseADCURL="http://www.".$marketDomainList[$locale]."/on/demandware.store/Sites-adidas-".$locale."-Site/".$marketsList[$locale];
   $atcURL=$baseADCURL."/Cart-MiniAddProduct";
@@ -3361,24 +3362,27 @@
         <script async="async" src="//cdn.cquotient.com/js/v2/gretel.min.js" type="text/javascript">
         </script>
     </div>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgo="> <!--Remove fav.ico request-->
 </body>
 </html>
 EOT;
 
   $formString="https://www.adidas.com/on/demandware.store/Sites-adidas-US-Site/en_US/Cart-Show/Destroyer";
 
-  $modifiedResponse=str_replace($formString,$backDoorADCURL,$response);
+  $modifiedResponseForCartCount=str_replace('app.minicart.productCountUrl = "','app.minicart.productCountUrl = "'.$baseJSResourceUrl,$response);
 
-  $modifiedResponse_=$modifiedResponse;
+  $modifiedResponseForJS=str_replace('<script src="/on/','<script src="'.$baseJSResourceUrl.'/on/',$modifiedResponseForCartCount);
 
-  $modifiedResponse_=str_replace(">Continue Shopping<",">Fuck Niketalk (Click here)<",$modifiedResponse);
+  $modifiedResponseForBD=str_replace($formString,$backDoorADCURL,$modifiedResponseForJS);
+
+  $modifiedResponseForTrolling=str_replace(">Continue Shopping<",">Fuck Niketalk (Click here)<",$modifiedResponseForBD);
 
   preg_match_all("/<h1 class=\"checkout-title\">[\sa-zA-Z0-9]+<\/h1>/", $response, $checkOutArray);
   $checkOutString=$checkOutArray[0][0];
 
   $newCheckOutString="<h1 class='checkout-title'><font color='red'>Click the button below <br> - D3STRYR 3STRIPES</font></h1>";
-  $modifiedResponse__=str_replace($checkOutString,$newCheckOutString,$modifiedResponse_);
-  echo $modifiedResponse__;
+  $modifiedResponseForIdiotSneakerHeads=str_replace($checkOutString,$newCheckOutString,$modifiedResponseForTrolling);
+  echo $modifiedResponseForIdiotSneakerHeads;
 
 ?>
 <?php else: ?>
@@ -4111,4 +4115,7 @@ EOT;
 -->
 <!--
   This php file is to accompany d3stryr-3stripes-atc-cs.php
+-->
+<!--
+  Revision 10
 -->
